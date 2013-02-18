@@ -21,20 +21,27 @@ public class ParseadorComandos {
 	 * la orden contendrá un comando DESCONOCIDO @see {@link Comandos#DESCONOCIDO}
 	 */
 	public Orden parsearComando(String comando) {
-		Orden orden = null;
 		
 		Comandos comandoparseado = Comandos.existe(comando);
 		
-		orden = comandoparseado.getOrden();
-		
-		orden.setComando(comandoparseado);
-		
-		return orden;
+		return construirOrden(comandoparseado);
 	}
 	
+	/**
+	 * Construye un objeto orden para el elemento concreto
+	 * a partir del comando.
+	 * 
+	 * @param comando Comnado a partir del cual se va a construir
+	 * la orden
+	 * @return orden construida
+	 */
 	private Orden construirOrden(Comandos comando) {
+		Orden orden = null;
 		
+		orden = comando.getOrden();
 		
-		return null;
+		orden.setComando(comando);
+		
+		return orden;
 	}
 }
