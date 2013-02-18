@@ -13,7 +13,9 @@ public enum MiViento {
 	NULO(0),
 	DESCONOCIDO(0);
 	
-	// factor que se usa para determinar la dirección de la velocidad del viento
+	/**
+	 * factor que se usa para determinar la dirección de la velocidad del viento
+	 */
 	int factor;
 	
 	MiViento(int factorViento) {
