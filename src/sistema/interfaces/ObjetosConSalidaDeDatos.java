@@ -1,4 +1,4 @@
-package interfaces;
+package sistema.interfaces;
 
 import java.util.StringTokenizer;
 

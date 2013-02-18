@@ -8,9 +8,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import src.tests.utils.TestUtilidadesCiclista;
+import sistema.entidades.bicicletas.Bicicleta;
 import src.tests.utils.TestUtilidadesBicicleta;
-import entidades.bicicletas.Bicicleta;
+import src.tests.utils.TestUtilidadesCiclista;
 
 
 @RunWith(JUnit4.class)

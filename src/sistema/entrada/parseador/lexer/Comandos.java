@@ -1,0 +1,77 @@
+package sistema.entrada.parseador.lexer;
+
+import sistema.entrada.parseador.ordenes.Orden;
+import sistema.entrada.parseador.ordenes.especificas.OrdenCiclista;
+
+/**
+ * Instrucciones que se pueden mandar al sistema para que realize
+ * las acciones deseadas
+ * @author Daniel Serrano Torres
+ * @author Alvaro Quesada Pimentel
+ */
+public enum Comandos {
+	
+	/**
+	 * Disminuye la velocidad de la bicicleta
+	 */
+	FRENAR(new OrdenCiclista()),
+	
+	/**
+	 * Aumenta de piñón la bicicleta
+	 */
+	SUBIRPIÑON(new OrdenCiclista()),
+	
+	/**
+	 * Disminuye el piñón de la bicicleta
+	 */
+	BAJARPIÑON(new OrdenCiclista()),
+	
+	/**
+	 * Aumenta la cadencia del ciclista
+	 */
+	AUMENTARCADENCIA(new OrdenCiclista()),
+	
+	/**
+	 * Comando usado cuando la instrucción proporcionada
+	 * no es reconocida
+	 */
+	DESCONOCIDO(null);
+	
+	Orden orden;
+	
+	Comandos(Orden o) {
+		orden = o;
+	}
+	
+	/**
+	 * Comprueba que el comando existe en el enumerado.
+	 * No distinge mayúsculas de minúsculas.
+	 * 
+	 * @param comando Comando introducido.
+	 * @return El comando del enumerado que coincide con
+	 * el introducido. Si el introducido no existe en el
+	 * enumerado se devuelve DESCONOCIDO.
+	 */
+	public static Comandos existe(String comando) {
+		Comandos comand = DESCONOCIDO;
+		
+		if (comando != null && !comando.equals("")) {
+			
+			for (Comandos c : Comandos.values()) {
+				
+				if ( c.name().equalsIgnoreCase(comando) ) 
+					comand = c;
+			}
+		}
+		
+		return comand;
+	}
+	
+	/**
+	 * Obtiene la orden asociada a cadad comando.
+	 * @return orden del comando.
+	 */
+	public Orden getOrden() {
+		return orden;
+	}
+}

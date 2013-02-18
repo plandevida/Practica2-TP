@@ -1,10 +1,10 @@
-package entidades.personas;
+package sistema.entidades.personas;
 
 import java.util.StringTokenizer;
 
-import interfaces.ObjetosConSalidaDeDatos;
-import entidades.bicicletas.Bicicleta;
-import entidades.tiempo.Reloj;
+import sistema.entidades.bicicletas.Bicicleta;
+import sistema.entidades.tiempo.Reloj;
+import sistema.interfaces.ObjetosConSalidaDeDatos;
 
 /**
  * Clase que representa un ciclista
@@ -13,25 +13,39 @@ import entidades.tiempo.Reloj;
  *
  */
 public class Ciclista extends Persona implements ObjetosConSalidaDeDatos {
-	// La bicicleta que va a montar
+	/**
+	 * La bicicleta que va a montar
+	 */
 	private Bicicleta bicicletamontada;
 	
-	// El reloj
+	/**
+	 * El reloj
+	 */
 	private Reloj reloj;
 	
-	// La candencia de la pedalada del ciclista
+	/**
+	 * La candencia de la pedalada del ciclista
+	 */
 	private double cadencia;
 	
-	// Variable que dice si el ciclista esta frenando
+	/**
+	 * Variable que dice si el ciclista esta frenando
+	 */
 	private boolean frenando = false;
+	
+	/**
+	 * Identificador único del cilista en la carrera
+	 */
+	private int numero_mallot;
 
-	public Ciclista(String nombre, double cadenciaCiclista, Bicicleta bicicletaamontar, Reloj relojCiclista) {
+	public Ciclista(String nombre, int numeromallot, double cadenciaCiclista, Bicicleta bicicletaamontar, Reloj relojCiclista) {
 		/**
 		 * Demomento el peso no es relevante, ni el cansancio
 		 * 
 		 * Esta clase hereda de persona @link Persona
 		 */
 		super(nombre, 50, 100);
+		numero_mallot = numeromallot;
 		cadencia = cadenciaCiclista;
 		bicicletamontada = bicicletaamontar;
 		reloj = relojCiclista;
@@ -139,5 +153,12 @@ public class Ciclista extends Persona implements ObjetosConSalidaDeDatos {
 	public void setCadencia(int cadencia) {
 		this.cadencia = cadencia;
 	}
+	
+	/**
+	 * Obtiene el número del mallot del ciclista.
+	 * @return Número único que identifica al ciclista.
+	 */
+	public int getNumeroMallot() {
+		return numero_mallot;
+	}
 }
->>>>>>> a

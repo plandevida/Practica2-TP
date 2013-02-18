@@ -8,8 +8,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import sistema.entidades.tiempo.Reloj;
 
-import entidades.tiempo.Reloj;
+
 
 
 @RunWith(JUnit4.class)

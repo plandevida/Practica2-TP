@@ -1,8 +1,9 @@
-package entidades.tiempo;
+package sistema.entidades.tiempo;
 
 import java.util.StringTokenizer;
 
-import interfaces.ObjetosConSalidaDeDatos;
+import sistema.interfaces.ObjetosConSalidaDeDatos;
+
 
 public class Reloj extends Contador implements ObjetosConSalidaDeDatos{
 	// Los segundos que lleva, es una unidad mas peque�a q los minutos

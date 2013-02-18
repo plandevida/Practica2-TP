@@ -1,6 +1,6 @@
-package entidades.tiempo;
+package sistema.entidades.tiempo;
 
-import interfaces.ObjetosQueSeEjecutan;
+import sistema.interfaces.ObjetosQueSeEjecutan;
 
 public class Contador implements ObjetosQueSeEjecutan {
 	//el numero de impulsos que lleva 
@@ -20,7 +20,7 @@ public class Contador implements ObjetosQueSeEjecutan {
 		return true;
 	}
 	/**
-	 * Método que a�ade un nuevo impulso al actual.
+	 * Método que a�ade un nuevo impulso al actual.
 	 * 
 	 * 
 	 */

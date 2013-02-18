@@ -8,10 +8,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import sistema.entidades.bicicletas.Bicicleta;
+import sistema.entidades.personas.Ciclista;
+import sistema.entidades.tiempo.Reloj;
 import src.tests.utils.TestUtilidadesBicicleta;
-import entidades.bicicletas.Bicicleta;
-import entidades.personas.Ciclista;
-import entidades.tiempo.Reloj;
 
 @RunWith(JUnit4.class)
 public class TestCiclista {
@@ -19,6 +19,7 @@ public class TestCiclista {
 	private Ciclista ciclista;
 	
 	private String nombreciclista = "Juan";
+	private int numeromallot = 1;
 	private double cadenciaciclista = 1.0d;
 	private Bicicleta bicicletaciclista;
 	private Reloj relojciclista;
@@ -34,7 +35,7 @@ public class TestCiclista {
 		
 		bicicletaciclista = new Bicicleta();
 		
-		ciclista = new Ciclista(nombreciclista, cadenciaciclista, bicicletaciclista, relojciclista);
+		ciclista = new Ciclista(nombreciclista, numeromallot, cadenciaciclista, bicicletaciclista, relojciclista);
 	}
 	
 	@Test
