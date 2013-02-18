@@ -19,12 +19,22 @@ public enum Comandos {
 	/**
 	 * Aumenta de piñón la bicicleta
 	 */
-	SUBIRPIÑON(new OrdenCiclista()),
+	SUBIRPINHON(new OrdenCiclista()),
 	
 	/**
 	 * Disminuye el piñón de la bicicleta
 	 */
-	BAJARPIÑON(new OrdenCiclista()),
+	BAJARPINHON(new OrdenCiclista()),
+	
+	/**
+	 * Aumenta el plato de la bicicleta
+	 */
+	SUBIRPALTO(new OrdenCiclista()),
+	
+	/**
+	 * Disminuye el plato de la bicicleta
+	 */
+	BAJARPLATO(new OrdenCiclista()),
 	
 	/**
 	 * Aumenta la cadencia del ciclista
