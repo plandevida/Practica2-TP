@@ -2,6 +2,7 @@ package sistema.entrada.parseador.lexer;
 
 import sistema.entrada.parseador.ordenes.Orden;
 import sistema.entrada.parseador.ordenes.especificas.OrdenCiclista;
+import sistema.entrada.parseador.ordenes.especificas.OrdenDesconocida;
 
 /**
  * Instrucciones que se pueden mandar al sistema para que realize
@@ -45,7 +46,7 @@ public enum Comandos {
 	 * Comando usado cuando la instrucción proporcionada
 	 * no es reconocida
 	 */
-	DESCONOCIDO(null);
+	DESCONOCIDO(new OrdenDesconocida());
 	
 	Orden orden;
 	

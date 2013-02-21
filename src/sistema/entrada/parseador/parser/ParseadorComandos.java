@@ -23,20 +23,36 @@ public class ParseadorComandos {
 	 */
 	public Orden parsearComando(String comando) {
 		
-		String[] a = comando.split(",");
+		String[] argumentos = comando.split(",");
 		
-		Comandos comandoparseado = Comandos.existe(a[0]);
+		argumentos[argumentos.length - 1] = borraBasura(argumentos[argumentos.length - 1]);
+		
+		Comandos comandoparseado = Comandos.existe(argumentos[0]);
 		
 		Orden o = comandoparseado.getOrden();
 		
-		if ( o instanceof OrdenCiclista ) {
-			((OrdenCiclista) o).setComando(comandoparseado);
-			((OrdenCiclista) o).setIdCilista(Integer.valueOf(a[1]).intValue());
-		}
+		return construirOrden(o, comandoparseado, argumentos);
+	}
+	
+	/**
+	 * Borra la basura añadida en la lectura.
+	 * 
+	 * @param cadena
+	 * @return
+	 */
+	private String borraBasura(String cadena) {
+		String truncada = cadena;
 		
-		return o;
 		
-//		return construirOrden(comandoparseado);
+//		if (cadena.contains("\r")) {
+//			truncada = cadena.split("\r")[0];
+//		} else {
+//			truncada = cadena.split("\n")[0];
+//		}
+		
+		truncada = cadena.split("\n")[0].split("\r")[0];
+		
+		return truncada;
 	}
 	
 	/**
@@ -47,12 +63,13 @@ public class ParseadorComandos {
 	 * la orden
 	 * @return orden construida
 	 */
-	private Orden construirOrden(Comandos comando) {
-		Orden orden = null;
+	private Orden construirOrden(Orden orden, Comandos comando, String[] argumentos) {
+		Orden ord = orden;
 		
-		orden = comando.getOrden();
-		
-		orden.setComando(comando);
+		if ( orden instanceof OrdenCiclista ) {
+			((OrdenCiclista) ord).setComando(comando);
+			((OrdenCiclista) ord).setIdCilista(Integer.valueOf(argumentos[1]).intValue());
+		}
 		
 		return orden;
 	}

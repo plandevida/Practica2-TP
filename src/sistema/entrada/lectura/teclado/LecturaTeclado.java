@@ -13,13 +13,16 @@ public class LecturaTeclado {
 	}
 	
 	public String leer() {
-		try {
+		
+		String salida = "";
+		
+		try { 
 
 			if (lectura.ready()) {
 				char[] buffer_de_lectura = new char[100];
 				lectura.read(buffer_de_lectura);
 
-				String salida = new String(buffer_de_lectura);
+				salida = new String(buffer_de_lectura);
 				
 				return salida;
 			}
@@ -29,7 +32,7 @@ public class LecturaTeclado {
 			finalizar();
 		}
 		
-		return null;
+		return salida;
 	}
 	
 	private void finalizar() {

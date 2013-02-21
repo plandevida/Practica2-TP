@@ -9,6 +9,7 @@ import sistema.entidades.bicicletas.Bicicleta;
 import sistema.entidades.personas.Ciclista;
 import sistema.entidades.tiempo.Reloj;
 import sistema.entrada.lectura.teclado.LecturaTeclado;
+import sistema.entrada.parseador.ordenes.Orden;
 import sistema.entrada.parseador.parser.ParseadorComandos;
 import sistema.interfaces.ObjetosQueSeEjecutan;
 import sistema.salidadatos.SalidaDatos;
@@ -21,6 +22,7 @@ public class Manager {
 	private Bicicleta bicicleta;
 	private Reloj reloj;
 	private ParseadorComandos parser;
+	private Orden orden;
 	
 	public void iniciar() {
 		parser = new ParseadorComandos();
@@ -44,13 +46,16 @@ public class Manager {
 	
 	public void ejecutar() {
 		
-		while ( reloj.getMinutos() < 2 ) {
-			parser.parsearComando(new LecturaTeclado(new InputStreamReader(System.in)).leer());
+		while ( reloj.getHoras() < 200000 ) {
+			orden = parser.parsearComando(new LecturaTeclado(new InputStreamReader(System.in)).leer());
+			
+			if (orden.getComando() != null)
+			System.out.println(orden.getComando());
 			
 			for (ObjetosQueSeEjecutan objetoejecutable : listaejecutables) {
 				objetoejecutable.ejecutar();
 			}
-			salidadatos.mostrarDatos();
+//			salidadatos.mostrarDatos();
 		}
 	}
 	
