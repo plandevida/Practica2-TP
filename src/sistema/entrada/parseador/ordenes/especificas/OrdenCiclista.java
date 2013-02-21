@@ -1,7 +1,6 @@
 package sistema.entrada.parseador.ordenes.especificas;
 
 import sistema.entidades.personas.Ciclista;
-import sistema.entrada.parseador.lexer.Comandos;
 import sistema.entrada.parseador.ordenes.Orden;
 
 /**
@@ -13,19 +12,9 @@ import sistema.entrada.parseador.ordenes.Orden;
 public class OrdenCiclista extends Orden {
 
 	/**
-	 * Comando que realizará el ciclista.
-	 */
-	private Comandos comando;
-	
-	/**
 	 * Identificador único del ciclista.
 	 */
 	private int numeromallotciclista;
-	
-	@Override
-	public Comandos getComando() {
-		return comando;
-	}
 	
 	/**
 	 * Obtiene el número del mallot del ciclista,
@@ -35,5 +24,9 @@ public class OrdenCiclista extends Orden {
 	 */
 	public int getIdCiclista() {
 		return numeromallotciclista;
+	}
+	
+	public void setIdCilista(int numeromallot) {
+		numeromallotciclista = numeromallot;
 	}
 }

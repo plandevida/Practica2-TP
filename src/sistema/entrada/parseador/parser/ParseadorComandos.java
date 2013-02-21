@@ -2,6 +2,7 @@ package sistema.entrada.parseador.parser;
 
 import sistema.entrada.parseador.lexer.Comandos;
 import sistema.entrada.parseador.ordenes.Orden;
+import sistema.entrada.parseador.ordenes.especificas.OrdenCiclista;
 
 /**
  * Clase que contruye la orden para el sistema a partir
@@ -22,9 +23,20 @@ public class ParseadorComandos {
 	 */
 	public Orden parsearComando(String comando) {
 		
-		Comandos comandoparseado = Comandos.existe(comando);
+		String[] a = comando.split(",");
 		
-		return construirOrden(comandoparseado);
+		Comandos comandoparseado = Comandos.existe(a[0]);
+		
+		Orden o = comandoparseado.getOrden();
+		
+		if ( o instanceof OrdenCiclista ) {
+			((OrdenCiclista) o).setComando(comandoparseado);
+			((OrdenCiclista) o).setIdCilista(Integer.valueOf(a[1]).intValue());
+		}
+		
+		return o;
+		
+//		return construirOrden(comandoparseado);
 	}
 	
 	/**

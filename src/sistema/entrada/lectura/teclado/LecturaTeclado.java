@@ -1,29 +1,27 @@
 package sistema.entrada.lectura.teclado;
 
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
-import sistema.interfaces.ObjetosQueSeEjecutan;
-
-public class LecturaTeclado implements ObjetosQueSeEjecutan {
+public class LecturaTeclado {
 
 	InputStreamReader lectura;
 
 	public LecturaTeclado(InputStreamReader nuevo_origen_de_lectura) {
 		lectura = nuevo_origen_de_lectura;
 	}
-
-	@Override
-	public boolean ejecutar() {
+	
+	public String leer() {
 		try {
 
 			if (lectura.ready()) {
 				char[] buffer_de_lectura = new char[100];
 				lectura.read(buffer_de_lectura);
 
-				String Salida = new String(buffer_de_lectura);
-				System.out.println(Salida);
-
+				String salida = new String(buffer_de_lectura);
+				
+				return salida;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -31,7 +29,7 @@ public class LecturaTeclado implements ObjetosQueSeEjecutan {
 			finalizar();
 		}
 		
-		return false;
+		return null;
 	}
 	
 	private void finalizar() {

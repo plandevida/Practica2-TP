@@ -18,7 +18,9 @@ public abstract class Orden {
 	 * 
 	 * @return Un comando @see {@link Comandos}
 	 */
-	protected abstract Comandos getComando();
+	public Comandos getComando() {
+		return comand;
+	}
 	
 	/**
 	 * Permite configurar el comando de la orden.

@@ -4,7 +4,11 @@ import java.util.StringTokenizer;
 
 import sistema.entidades.bicicletas.Bicicleta;
 import sistema.entidades.tiempo.Reloj;
+import sistema.entrada.parseador.lexer.Comandos;
+import sistema.entrada.parseador.ordenes.Orden;
+import sistema.entrada.parseador.ordenes.especificas.OrdenCiclista;
 import sistema.interfaces.ObjetosConSalidaDeDatos;
+import sistema.interfaces.ObjetosQueRecibenComandos;
 
 /**
  * Clase que representa un ciclista
@@ -12,7 +16,7 @@ import sistema.interfaces.ObjetosConSalidaDeDatos;
  * @author dserrano
  *
  */
-public class Ciclista extends Persona implements ObjetosConSalidaDeDatos {
+public class Ciclista extends Persona implements ObjetosConSalidaDeDatos, ObjetosQueRecibenComandos {
 	/**
 	 * La bicicleta que va a montar
 	 */
@@ -160,5 +164,13 @@ public class Ciclista extends Persona implements ObjetosConSalidaDeDatos {
 	 */
 	public int getNumeroMallot() {
 		return numero_mallot;
+	}
+
+	@Override
+	public void ejecutaComando(Orden orden) {
+		OrdenCiclista oc = (OrdenCiclista) orden;
+		
+		@SuppressWarnings("unused")
+		Comandos c = oc.getComando();
 	}
 }

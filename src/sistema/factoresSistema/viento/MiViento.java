@@ -22,6 +22,21 @@ public enum MiViento {
 		factor = factorViento;
 	}
 	
+	public static MiViento existe(String viento) {
+		MiViento wind = DESCONOCIDO;
+		
+		if (viento != null && !viento.equals("")) {
+			
+			for (MiViento c : MiViento.values()) {
+				
+				if ( c.name().equalsIgnoreCase(viento) ) 
+					wind = c;
+			}
+		}
+	
+		return wind;
+	}
+	
 	public int getFactor() {
 		return factor;
 	}
