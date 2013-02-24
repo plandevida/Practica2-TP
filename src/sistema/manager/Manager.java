@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sistema.entidades.bicicletas.Bicicleta;
-import sistema.entidades.personas.Ciclista;
+import sistema.entidades.personas.ciclistas.Ciclista;
 import sistema.entidades.tiempo.Reloj;
 import sistema.entrada.lectura.teclado.LecturaTeclado;
 import sistema.entrada.parseador.ordenes.Orden;

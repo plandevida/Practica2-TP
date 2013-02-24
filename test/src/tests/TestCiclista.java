@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import sistema.entidades.bicicletas.Bicicleta;
-import sistema.entidades.personas.Ciclista;
+import sistema.entidades.personas.ciclistas.Ciclista;
 import sistema.entidades.tiempo.Reloj;
 import src.tests.utils.TestUtilidadesBicicleta;
 

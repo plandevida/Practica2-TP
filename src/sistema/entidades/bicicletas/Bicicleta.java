@@ -2,6 +2,7 @@ package sistema.entidades.bicicletas;
 
 import java.util.StringTokenizer;
 
+import sistema.entidades.veiculos.Veiculo;
 import sistema.interfaces.ObjetosConSalidaDeDatos;
 import sistema.interfaces.ObjetosQueSeEjecutan;
 
@@ -12,9 +13,7 @@ import sistema.interfaces.ObjetosQueSeEjecutan;
  * @author Daniel Serrano Torres
  * @author Alvaro Quesada Pimentel
  */
-public class Bicicleta implements ObjetosQueSeEjecutan, ObjetosConSalidaDeDatos {
-
-	protected double velocidadactual;
+public class Bicicleta extends Veiculo implements ObjetosQueSeEjecutan, ObjetosConSalidaDeDatos {
 
 	// El array representa los piñones de la bicicleta con el indice
 	// del array y su valor es el número de dientes del piñón
@@ -31,9 +30,6 @@ public class Bicicleta implements ObjetosQueSeEjecutan, ObjetosConSalidaDeDatos 
 	protected int pinhonactual;
 
 	protected double radiorueda;
-	
-	//Espacio que lleva recorrido
-	protected double espaciorecorrido;
 		
 	public Bicicleta() {
 		setVelocidad(0);
@@ -169,52 +165,6 @@ public class Bicicleta implements ObjetosQueSeEjecutan, ObjetosConSalidaDeDatos 
 		if (platoactual > 0) {
 			platoactual--;
 		}
-	}
-	
-	/**
-	 * Cambia el valor del espacio recorrido por la bicicleta.
-	 * 
-	 * @param espaciodepedalada Espacio recorrido por la pedalada.
-	 */
-	public void setEspacioRecorrido(double espaciodepedalada){
-		
-		espaciorecorrido += espaciodepedalada;
-	}
-	
-	/**
-	 * Incrementa la velocidad de la bicicleta.
-	 * 
-	 * @param incrementovelocidad Valor a aumentar la velocidad de la bicicleta.
-	 */
-	private void setVelocidadIncremento(double incrementovelocidad) {
-		velocidadactual += incrementovelocidad;
-	}
-	
-	/**
-	 * Cambia la velocidad de la bicicleta.
-	 * 
-	 * @param velocidadnueva La nueva velocidad de la bicicleta.
-	 */
-	public void setVelocidad(double velocidadnueva) {
-		velocidadactual = velocidadnueva;
-	}
-	
-	/**
-	 * Obtiene el espacio total recorrido por la bicicleta.
-	 * 
-	 * @return Espacio recorrido por la bicicleta.
-	 */
-	public double getEspacioRecorrido() {
-		return espaciorecorrido;
-	}
-	
-	/**
-	 * Obtiene la velocidad a la que va la bicicleta.
-	 * 
-	 * @return El valor de la velocidad de la bicicleta.
-	 */
-	public double getVelocidad() {
-		return velocidadactual;
 	}
 	
 	/**

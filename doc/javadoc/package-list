@@ -1,1 +1,17 @@
+sistema.entidades.bicicletas
+sistema.entidades.personas
+sistema.entidades.tiempo
+sistema.entidades.veiculos
+sistema.entrada.lectura.fichero
+sistema.entrada.lectura.teclado
 sistema.entrada.parseador.lexer
+sistema.entrada.parseador.ordenes
+sistema.entrada.parseador.ordenes.especificas
+sistema.entrada.parseador.parser
+sistema.factoresSistema
+sistema.factoresSistema.viento
+sistema.interfaces
+sistema.manager
+sistema.salidadatos
+src.tests
+src.tests.utils

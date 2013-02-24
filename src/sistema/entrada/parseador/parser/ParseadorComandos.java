@@ -25,6 +25,8 @@ public class ParseadorComandos {
 		
 		String[] argumentos = comando.split(",");
 		
+		//Borra los carácteres basura añadidos al final de la cadena
+		// (residentes en el último token)
 		argumentos[argumentos.length - 1] = borraBasura(argumentos[argumentos.length - 1]);
 		
 		Comandos comandoparseado = Comandos.existe(argumentos[0]);
@@ -43,13 +45,6 @@ public class ParseadorComandos {
 	private String borraBasura(String cadena) {
 		String truncada = cadena;
 		
-		
-//		if (cadena.contains("\r")) {
-//			truncada = cadena.split("\r")[0];
-//		} else {
-//			truncada = cadena.split("\n")[0];
-//		}
-		
 		truncada = cadena.split("\n")[0].split("\r")[0];
 		
 		return truncada;
@@ -64,11 +59,11 @@ public class ParseadorComandos {
 	 * @return orden construida
 	 */
 	private Orden construirOrden(Orden orden, Comandos comando, String[] argumentos) {
-		Orden ord = orden;
-		
 		if ( orden instanceof OrdenCiclista ) {
-			((OrdenCiclista) ord).setComando(comando);
-			((OrdenCiclista) ord).setIdCilista(Integer.valueOf(argumentos[1]).intValue());
+			OrdenCiclista ordenciclista = (OrdenCiclista) orden;
+			
+			ordenciclista.setComando(comando);
+			ordenciclista.setIdCilista(Integer.valueOf(argumentos[1]).intValue());
 		}
 		
 		return orden;

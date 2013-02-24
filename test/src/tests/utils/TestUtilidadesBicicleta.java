@@ -31,7 +31,7 @@ public class TestUtilidadesBicicleta {
 	/**
 	 * Relación entre el plato y piñón que se están usando actualmente.
 	 * 
-	 * @reutrn Un entero que es relación entre ambos valores.
+	 * @return Un entero que es relación entre ambos valores.
 	 */
 	public int relacionDeTransmision(int dientesPlato, int dientesPinhon) {
 

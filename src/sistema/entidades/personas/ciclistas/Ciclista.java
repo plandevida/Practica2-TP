@@ -1,8 +1,9 @@
-package sistema.entidades.personas;
+package sistema.entidades.personas.ciclistas;
 
 import java.util.StringTokenizer;
 
 import sistema.entidades.bicicletas.Bicicleta;
+import sistema.entidades.personas.Persona;
 import sistema.entidades.tiempo.Reloj;
 import sistema.entrada.parseador.lexer.Comandos;
 import sistema.entrada.parseador.ordenes.Orden;
@@ -116,7 +117,7 @@ public class Ciclista extends Persona implements ObjetosConSalidaDeDatos, Objeto
 	/**
 	 * Cambia la bicicleta que se esta montando.
 	 * 
-	 * @param bicicleta que se esta montando.
+	 * @param bicicletamontada Bicicleta que se esta montando.
 	 */
 	public void setBicicletamontada(Bicicleta bicicletamontada) {
 		this.bicicletamontada = bicicletamontada;
@@ -134,7 +135,7 @@ public class Ciclista extends Persona implements ObjetosConSalidaDeDatos, Objeto
 	/**
 	 * Cambia el reloj.
 	 * 
-	 * @param reloj.
+	 * @param reloj Reloj del ciclista.
 	 */
 	public void setReloj(Reloj reloj) {
 		this.reloj = reloj;
@@ -152,7 +153,7 @@ public class Ciclista extends Persona implements ObjetosConSalidaDeDatos, Objeto
 	/**
 	 * Cambia la candencia del ciclista.
 	 * 
-	 * @param candencia nueva.
+	 * @param cadencia Cadencia nueva.
 	 */
 	public void setCadencia(int cadencia) {
 		this.cadencia = cadencia;

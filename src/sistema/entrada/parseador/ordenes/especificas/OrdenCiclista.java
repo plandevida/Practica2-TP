@@ -1,6 +1,6 @@
 package sistema.entrada.parseador.ordenes.especificas;
 
-import sistema.entidades.personas.Ciclista;
+import sistema.entidades.personas.ciclistas.Ciclista;
 import sistema.entrada.parseador.ordenes.Orden;
 
 /**
