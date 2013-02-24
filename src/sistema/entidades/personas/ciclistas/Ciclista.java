@@ -5,41 +5,41 @@ import java.util.StringTokenizer;
 import sistema.entidades.personas.Persona;
 import sistema.entidades.tiempo.Reloj;
 import sistema.entidades.veiculos.bicicletas.Bicicleta;
+import sistema.entrada.ordenes.Orden;
+import sistema.entrada.ordenes.especificas.OrdenCiclista;
 import sistema.entrada.parseador.lexer.Comandos;
-import sistema.entrada.parseador.ordenes.Orden;
-import sistema.entrada.parseador.ordenes.especificas.OrdenCiclista;
 import sistema.interfaces.ObjetosConSalidaDeDatos;
-import sistema.interfaces.ObjetosQueRecibenComandos;
+import sistema.interfaces.ObjetosQueRecibenOrdenes;
 
 /**
- * Clase que representa un ciclista
+ * Clase que representa un ciclista.
  * 
- * @author dserrano
- *
+ * @author Daniel Serrano Torres
+ * @author Alvaro Quesada Pimentel
  */
-public class Ciclista extends Persona implements ObjetosConSalidaDeDatos, ObjetosQueRecibenComandos {
+public class Ciclista extends Persona implements ObjetosConSalidaDeDatos, ObjetosQueRecibenOrdenes {
 	/**
-	 * La bicicleta que va a montar
+	 * La bicicleta que va a montar.
 	 */
 	private Bicicleta bicicletamontada;
 	
 	/**
-	 * El reloj
+	 * El reloj del ciclista.
 	 */
 	private Reloj reloj;
 	
 	/**
-	 * La candencia de la pedalada del ciclista
+	 * La candencia de la pedalada del ciclista.
 	 */
 	private double cadencia;
 	
 	/**
-	 * Variable que dice si el ciclista esta frenando
+	 * Variable que dice si el ciclista esta frenando.
 	 */
 	private boolean frenando = false;
 	
 	/**
-	 * Identificador único del cilista en la carrera
+	 * Identificador único del cilista en la carrera.
 	 */
 	private int numero_mallot;
 
@@ -171,7 +171,8 @@ public class Ciclista extends Persona implements ObjetosConSalidaDeDatos, Objeto
 	public void ejecutaComando(Orden orden) {
 		OrdenCiclista oc = (OrdenCiclista) orden;
 		
-		@SuppressWarnings("unused")
 		Comandos c = oc.getComando();
+		
+		System.out.println("EL CICLISTA " + getNumeroMallot() + " HA RECIBIDO LA ORDEN " + c.name());
 	}
 }

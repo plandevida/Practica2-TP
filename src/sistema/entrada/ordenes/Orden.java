@@ -1,4 +1,4 @@
-package sistema.entrada.parseador.ordenes;
+package sistema.entrada.ordenes;
 
 import sistema.entrada.parseador.lexer.Comandos;
 
@@ -9,7 +9,7 @@ import sistema.entrada.parseador.lexer.Comandos;
  * @author Daniel Serrano Torres
  * @author Alvaro Quesada Pimentel
  */
-public abstract class Orden {
+public abstract class Orden implements Comparable<Orden> {
 	
 	protected Comandos comand;
 	
@@ -29,5 +29,18 @@ public abstract class Orden {
 	 */
 	public void setComando(Comandos comando) {
 		comand = comando;
+	}
+	
+	@Override
+	public int compareTo(Orden o) {
+		int resultado = 0;
+		
+		if ( o != null ) {
+			if ( this.getComando() != null && o.getComando() != null && this.getComando().equals(o.getComando())) {
+				resultado = -1;
+			}
+		}
+		
+		return resultado;
 	}
 }

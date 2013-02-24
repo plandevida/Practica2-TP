@@ -1,7 +1,7 @@
-package sistema.entrada.parseador.ordenes.especificas;
+package sistema.entrada.ordenes.especificas;
 
 import sistema.entidades.personas.ciclistas.Ciclista;
-import sistema.entrada.parseador.ordenes.Orden;
+import sistema.entrada.ordenes.Orden;
 
 /**
  * Orden específica para el ciclista

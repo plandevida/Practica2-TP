@@ -1,8 +1,8 @@
 package sistema.interfaces;
 
-import sistema.entrada.parseador.ordenes.Orden;
+import sistema.entrada.ordenes.Orden;
 
-public interface ObjetosQueRecibenComandos {
+public interface ObjetosQueRecibenOrdenes {
 	
 	/**
 	 * Método que ejecutará el comando concreto del objeto correspondiente 

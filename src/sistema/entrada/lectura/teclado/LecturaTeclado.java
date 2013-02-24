@@ -1,17 +1,26 @@
 package sistema.entrada.lectura.teclado;
 
-
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class LecturaTeclado {
+import sistema.entrada.lectura.InterfazLectura;
 
-	InputStreamReader lectura;
+/**
+ * Clase que lee del teclado si espera activa, 
+ * es decir, no para el programa esperando a leer.
+ * 
+ * @author Daniel Serrano Torres
+ * @author Alvaro Quesada Pimentel
+ */
+public class LecturaTeclado implements InterfazLectura {
 
-	public LecturaTeclado(InputStreamReader nuevo_origen_de_lectura) {
-		lectura = nuevo_origen_de_lectura;
+	private InputStreamReader lectura;
+
+	public LecturaTeclado() {
+		lectura = new InputStreamReader(System.in);
 	}
 	
+	@Override
 	public String leer() {
 		
 		String salida = "";
@@ -19,7 +28,9 @@ public class LecturaTeclado {
 		try { 
 
 			if (lectura.ready()) {
+				
 				char[] buffer_de_lectura = new char[100];
+				
 				lectura.read(buffer_de_lectura);
 
 				salida = new String(buffer_de_lectura);
@@ -27,7 +38,7 @@ public class LecturaTeclado {
 				return salida;
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.println("No está listo la lectura por teclado");
 		} finally {
 			finalizar();
 		}
@@ -35,6 +46,9 @@ public class LecturaTeclado {
 		return salida;
 	}
 	
+	/**
+	 * Cierra el flujo de lectura.
+	 */
 	private void finalizar() {
 		if (lectura != null) {
 			try {

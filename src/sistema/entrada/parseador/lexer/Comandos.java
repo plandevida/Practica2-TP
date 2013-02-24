@@ -1,8 +1,8 @@
 package sistema.entrada.parseador.lexer;
 
-import sistema.entrada.parseador.ordenes.Orden;
-import sistema.entrada.parseador.ordenes.especificas.OrdenCiclista;
-import sistema.entrada.parseador.ordenes.especificas.OrdenDesconocida;
+import sistema.entrada.ordenes.Orden;
+import sistema.entrada.ordenes.especificas.OrdenCiclista;
+import sistema.entrada.ordenes.especificas.OrdenDesconocida;
 
 /**
  * Instrucciones que se pueden mandar al sistema para que realize

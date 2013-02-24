@@ -1,8 +1,9 @@
 package sistema.entrada.parseador.parser;
 
+import sistema.entrada.ordenes.Dispatcher;
+import sistema.entrada.ordenes.Orden;
+import sistema.entrada.ordenes.especificas.OrdenCiclista;
 import sistema.entrada.parseador.lexer.Comandos;
-import sistema.entrada.parseador.ordenes.Orden;
-import sistema.entrada.parseador.ordenes.especificas.OrdenCiclista;
 
 /**
  * Clase que contruye la orden para el sistema a partir
@@ -14,6 +15,19 @@ import sistema.entrada.parseador.ordenes.especificas.OrdenCiclista;
 public class ParseadorComandos {
 	
 	/**
+	 * Distribuidor de ordenes
+	 */
+	private Dispatcher distribuidor;
+	
+	public ParseadorComandos() {
+		distribuidor = new Dispatcher();
+	}
+	
+	public ParseadorComandos(Dispatcher dispatcher) {
+		distribuidor = dispatcher;
+	}
+	
+	/**
 	 * Genera una orden para un elemento del sistema,
 	 * a partir de un comando recibido.
 	 * 
@@ -21,7 +35,7 @@ public class ParseadorComandos {
 	 * @return La orden generada, si el comando no se reconoce
 	 * la orden contendrá un comando DESCONOCIDO @see {@link Comandos#DESCONOCIDO}
 	 */
-	public Orden parsearComando(String comando) {
+	public void parsearComando(String comando) {
 		
 		String[] argumentos = comando.split(",");
 		
@@ -31,9 +45,29 @@ public class ParseadorComandos {
 		
 		Comandos comandoparseado = Comandos.existe(argumentos[0]);
 		
-		Orden o = comandoparseado.getOrden();
+		Orden orden = comandoparseado.getOrden();
 		
-		return construirOrden(o, comandoparseado, argumentos);
+		orden = construirOrden(orden, comandoparseado, argumentos);
+		
+		// Se registra la orden para ser distribuida
+		distribuidor.registrarOrdenes(orden);
+	}
+	
+	/**
+	 * Invoca al método {@link Dispatcher#dispatch()} para
+	 * distribuir las ordenes.
+	 */
+	public void dispatch() {
+		distribuidor.dispatch();
+	}
+	
+	/**
+	 * Devuelve el distribuidor de ordenes del parseador.
+	 * 
+	 * @return El distribuidor de ordenes.
+	 */
+	public Dispatcher getDispatcher() {
+		return distribuidor;
 	}
 	
 	/**
