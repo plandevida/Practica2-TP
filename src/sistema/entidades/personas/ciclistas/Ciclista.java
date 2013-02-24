@@ -2,9 +2,9 @@ package sistema.entidades.personas.ciclistas;
 
 import java.util.StringTokenizer;
 
-import sistema.entidades.bicicletas.Bicicleta;
 import sistema.entidades.personas.Persona;
 import sistema.entidades.tiempo.Reloj;
+import sistema.entidades.veiculos.bicicletas.Bicicleta;
 import sistema.entrada.parseador.lexer.Comandos;
 import sistema.entrada.parseador.ordenes.Orden;
 import sistema.entrada.parseador.ordenes.especificas.OrdenCiclista;

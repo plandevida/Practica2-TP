@@ -1,4 +1,4 @@
-package sistema.entidades.bicicletas;
+package sistema.entidades.veiculos.bicicletas;
 
 import java.util.StringTokenizer;
 

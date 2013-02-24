@@ -5,9 +5,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import sistema.entidades.bicicletas.Bicicleta;
 import sistema.entidades.personas.ciclistas.Ciclista;
 import sistema.entidades.tiempo.Reloj;
+import sistema.entidades.veiculos.bicicletas.Bicicleta;
 import sistema.entrada.lectura.teclado.LecturaTeclado;
 import sistema.entrada.parseador.ordenes.Orden;
 import sistema.entrada.parseador.parser.ParseadorComandos;
