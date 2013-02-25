@@ -1,4 +1,4 @@
-package src.tests;
+package src.tests.sistema.entidades.veiculos;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
