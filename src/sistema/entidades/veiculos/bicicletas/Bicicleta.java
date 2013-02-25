@@ -200,7 +200,9 @@ public class Bicicleta extends Veiculo implements ObjetosQueSeEjecutan, ObjetosC
 	 * @param platoactual El nuevo plato a engranar.
 	 */
 	public void setPlatoactual(int platoactual) {
-		this.platoactual = platoactual;
+		if ( platoactual <= platos.length - 1 || platoactual >= 0) {
+			this.platoactual = platoactual;
+		}
 	}
 	
 	/**
@@ -218,7 +220,9 @@ public class Bicicleta extends Veiculo implements ObjetosQueSeEjecutan, ObjetosC
 	 * @param pinhonactual El nuevo piñón a engranar.
 	 */
 	public void setPinhonactual(int pinhonactual) {
-		this.pinhonactual = pinhonactual;
+		if ( pinhonactual <= pinhones.length - 1 || pinhonactual >= 0) {
+			this.pinhonactual = pinhonactual;
+		}
 	}
 	
 	/**

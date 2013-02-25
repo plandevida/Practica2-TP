@@ -1,5 +1,7 @@
 package sistema.entrada.lectura;
 
+import java.io.IOException;
+
 import sistema.entrada.lectura.fichero.LecturaFichero;
 import sistema.entrada.lectura.teclado.LecturaTeclado;
 
@@ -28,5 +30,22 @@ public class Lector {
 	public String leerFichero() {
 		
 		return fichero.leer();
+	}
+	
+	/**
+	 * Cierra todos los flujos de lecturas.
+	 * @return
+	 */
+	public boolean finalizarLecturas() {
+		boolean correcto = true;
+		
+		try {
+			teclado.finalizar();
+			fichero.finalizar();
+		} catch (IOException e) {
+			correcto = false;
+		}
+		
+		return correcto;
 	}
 }

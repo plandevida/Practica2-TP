@@ -5,11 +5,7 @@ import java.util.StringTokenizer;
 import sistema.entidades.personas.Persona;
 import sistema.entidades.tiempo.Reloj;
 import sistema.entidades.veiculos.bicicletas.Bicicleta;
-import sistema.entrada.ordenes.Orden;
-import sistema.entrada.ordenes.especificas.OrdenCiclista;
-import sistema.entrada.parseador.lexer.Comandos;
 import sistema.interfaces.ObjetosConSalidaDeDatos;
-import sistema.interfaces.ObjetosQueRecibenOrdenes;
 
 /**
  * Clase que representa un ciclista.
@@ -17,7 +13,7 @@ import sistema.interfaces.ObjetosQueRecibenOrdenes;
  * @author Daniel Serrano Torres
  * @author Alvaro Quesada Pimentel
  */
-public class Ciclista extends Persona implements ObjetosConSalidaDeDatos, ObjetosQueRecibenOrdenes {
+public class Ciclista extends Persona implements ObjetosConSalidaDeDatos {
 	/**
 	 * La bicicleta que va a montar.
 	 */
@@ -37,11 +33,6 @@ public class Ciclista extends Persona implements ObjetosConSalidaDeDatos, Objeto
 	 * Variable que dice si el ciclista esta frenando.
 	 */
 	private boolean frenando = false;
-	
-	/**
-	 * Identificador único del cilista en la carrera.
-	 */
-	private int numero_mallot;
 
 	public Ciclista(String nombre, int numeromallot, double cadenciaCiclista, Bicicleta bicicletaamontar, Reloj relojCiclista) {
 		/**
@@ -50,7 +41,6 @@ public class Ciclista extends Persona implements ObjetosConSalidaDeDatos, Objeto
 		 * Esta clase hereda de persona @link Persona
 		 */
 		super(nombre, 50, 100);
-		numero_mallot = numeromallot;
 		cadencia = cadenciaCiclista;
 		bicicletamontada = bicicletaamontar;
 		reloj = relojCiclista;
@@ -74,7 +64,7 @@ public class Ciclista extends Persona implements ObjetosConSalidaDeDatos, Objeto
 			if (bicicletamontada.getVelocidad() < 15)
 				frenando = false;
 				
-			bicicletamontada.frenar();
+			frenar();
 		}
 		
 		return true;
@@ -99,10 +89,67 @@ public class Ciclista extends Persona implements ObjetosConSalidaDeDatos, Objeto
 	
 	/**
 	 * Metodo que da pedaladas a la bicicleta
-	 *  
 	 */
-	private void pedalear() {
+	public void pedalear() {
 		bicicletamontada.darPedalada(cadencia);
+	}
+	
+	/**
+	 * Frena la bicicleta.
+	 */
+	public double frenar() {
+		
+		bicicletamontada.frenar();
+		
+		return bicicletamontada.getVelocidad();
+	}
+	
+	/**
+	 * Aumentar el piñón actual al mayor adyacente.
+	 * 
+	 * @return El piñon al que se ha cambiado.
+	 */
+	public int aumentarPinhon() {
+		
+		bicicletamontada.setPinhonactual(bicicletamontada.getPinhonactual()+1);
+		
+		return bicicletamontada.getPinhonactual();
+	}
+	
+	/**
+	 * Desminuir el piñón actual al menor adyacente.
+	 * 
+	 * @return El piñon al que se ha cambiado.
+	 */
+	public int disminuirPinhon() {
+		
+		bicicletamontada.setPinhonactual(bicicletamontada.getPinhonactual()-1);
+		
+		return bicicletamontada.getPinhonactual();
+	}
+	
+	/**
+	 * Aumentar el plato actual al mayor adyacente.
+	 * 
+	 * @return El plato al que se ha cambiado.
+	 */
+	public int aumentarPlato() {
+		
+		bicicletamontada.setPlatoactual(bicicletamontada.getPlatoactual()+1);
+		
+		return bicicletamontada.getPlatoactual();
+	}
+	
+	/**
+	 * Desminuir el plato actual al menor adyacente.
+	 * 
+	 * @return El plato al que se ha cambiado.
+	 */
+	public int disminuirPlato() {
+		
+		bicicletamontada.setPlatoactual(bicicletamontada.getPlatoactual()-1);
+		
+		return bicicletamontada.getPlatoactual();
 	}
 	
 	/**
@@ -157,22 +204,5 @@ public class Ciclista extends Persona implements ObjetosConSalidaDeDatos, Objeto
 	 */
 	public void setCadencia(int cadencia) {
 		this.cadencia = cadencia;
-	}
-	
-	/**
-	 * Obtiene el número del mallot del ciclista.
-	 * @return Número único que identifica al ciclista.
-	 */
-	public int getNumeroMallot() {
-		return numero_mallot;
-	}
-
-	@Override
-	public void ejecutaComando(Orden orden) {
-		OrdenCiclista oc = (OrdenCiclista) orden;
-		
-		Comandos c = oc.getComando();
-		
-		System.out.println("EL CICLISTA " + getNumeroMallot() + " HA RECIBIDO LA ORDEN " + c.name());
 	}
 }

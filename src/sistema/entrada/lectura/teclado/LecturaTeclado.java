@@ -1,5 +1,6 @@
 package sistema.entrada.lectura.teclado;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -14,10 +15,14 @@ import sistema.entrada.lectura.InterfazLectura;
  */
 public class LecturaTeclado implements InterfazLectura {
 
-	private InputStreamReader lectura;
+	private BufferedReader lectura;
 
 	public LecturaTeclado() {
-		lectura = new InputStreamReader(System.in);
+		lectura = new BufferedReader(new InputStreamReader(System.in));
+	}
+	
+	public LecturaTeclado(BufferedReader flujo) {
+		lectura = flujo;
 	}
 	
 	@Override
@@ -29,18 +34,19 @@ public class LecturaTeclado implements InterfazLectura {
 
 			if (lectura.ready()) {
 				
-				char[] buffer_de_lectura = new char[100];
+//				char[] buffer_de_lectura = new char[100];
 				
-				lectura.read(buffer_de_lectura);
+//				lectura.read(buffer_de_lectura);
+				
+				salida = lectura.readLine();
 
-				salida = new String(buffer_de_lectura);
+//				salida = new String(buffer_de_lectura);
 				
 				return salida;
 			}
 		} catch (IOException e) {
 			System.err.println("No está listo la lectura por teclado");
-		} finally {
-			finalizar();
+			e.printStackTrace();
 		}
 		
 		return salida;
@@ -48,14 +54,11 @@ public class LecturaTeclado implements InterfazLectura {
 	
 	/**
 	 * Cierra el flujo de lectura.
+	 * @throws IOException 
 	 */
-	private void finalizar() {
+	public void finalizar() throws IOException {
 		if (lectura != null) {
-			try {
-				lectura.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			lectura.close();
 		}
 	}
 }

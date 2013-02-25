@@ -1,12 +1,6 @@
 package sistema.entrada.ordenes;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.PriorityQueue;
-
-import sistema.entidades.personas.ciclistas.Ciclista;
-import sistema.entrada.ordenes.especificas.OrdenCiclista;
-import sistema.interfaces.ObjetosQueRecibenOrdenes;
 
 /**
  * Clase que distruye ls ordenes del sistema a los elementos del sistema.
@@ -16,7 +10,7 @@ import sistema.interfaces.ObjetosQueRecibenOrdenes;
  */
 public class Dispatcher {
 	
-	List<ObjetosQueRecibenOrdenes> objetosquerecibenordenes;
+	// Cola de ordenes a procesar.
 	PriorityQueue<Orden> listadeordenes;
 	
 	/**
@@ -24,10 +18,14 @@ public class Dispatcher {
 	 * y la cola de ordenes vacía.
 	 */
 	public Dispatcher() {
-		objetosquerecibenordenes = new ArrayList<ObjetosQueRecibenOrdenes>();
 		listadeordenes = new PriorityQueue<Orden>();
 	}
 	
+	/**
+	 * Añadir una orden a la cola.
+	 * 
+	 * @param orden Orden que se registrará en la cola.
+	 */
 	public void registrarOrdenes(Orden orden) {
 		
 		listadeordenes.add(orden);
@@ -42,32 +40,9 @@ public class Dispatcher {
 			
 			for (Orden orden : listadeordenes) {
 				
-				if (orden instanceof OrdenCiclista) {
-					
-					dispatchCiclista( (OrdenCiclista) orden);
-				}
+				orden.ejecutarOrden();
+				listadeordenes.remove();
 			}	
-		}
-	}
-	
-	/**
-	 * Distribye las ordenes a los ciclistas.
-	 * 
-	 * @param orden Orden del tipo {@link OrdenCiclista}
-	 */
-	private void dispatchCiclista(OrdenCiclista orden) {
-		
-		for (ObjetosQueRecibenOrdenes objeto : objetosquerecibenordenes) {
-			
-			if (objeto instanceof Ciclista) {
-				
-				Ciclista ciclista = (Ciclista) objeto;
-				
-				if ( orden.getIdCiclista() == ciclista.getNumeroMallot()) {
-					
-					ciclista.ejecutaComando(orden);
-				}
-			}
 		}
 	}
 }

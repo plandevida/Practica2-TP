@@ -31,16 +31,40 @@ public abstract class Orden implements Comparable<Orden> {
 		comand = comando;
 	}
 	
+	/**
+	 * Ejecuta la orden, mandando el mensaje del
+	 * comando al objeto que lo debe ejecutar.
+	 */
+	public abstract void ejecutarOrden();
+	
 	@Override
 	public int compareTo(Orden o) {
 		int resultado = 0;
 		
 		if ( o != null ) {
-			if ( this.getComando() != null && o.getComando() != null && this.getComando().equals(o.getComando())) {
+			if (! this.equals(o)) {
 				resultado = -1;
 			}
 		}
 		
 		return resultado;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+	
+		boolean iguales = false;
+		
+		try {
+			if (o != null && o instanceof Orden) {
+				Orden ord = (Orden) o;
+				
+				iguales = this.comand.equals(ord.getComando());
+			}
+		} catch(Exception e) {
+			iguales = false;
+		}
+		
+		return iguales;
 	}
 }

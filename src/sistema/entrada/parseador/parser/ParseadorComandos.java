@@ -2,7 +2,7 @@ package sistema.entrada.parseador.parser;
 
 import sistema.entrada.ordenes.Dispatcher;
 import sistema.entrada.ordenes.Orden;
-import sistema.entrada.ordenes.especificas.OrdenCiclista;
+import sistema.entrada.ordenes.especificas.OrdenAumentarCadencia;
 import sistema.entrada.parseador.lexer.Comandos;
 
 /**
@@ -45,9 +45,7 @@ public class ParseadorComandos {
 		
 		Comandos comandoparseado = Comandos.existe(argumentos[0]);
 		
-		Orden orden = comandoparseado.getOrden();
-		
-		orden = construirOrden(orden, comandoparseado, argumentos);
+		Orden orden = construirOrden(comandoparseado, argumentos);
 		
 		// Se registra la orden para ser distribuida
 		distribuidor.registrarOrdenes(orden);
@@ -74,7 +72,7 @@ public class ParseadorComandos {
 	 * Borra la basura añadida en la lectura.
 	 * 
 	 * @param cadena
-	 * @return
+	 * @return La cadena sin caracterés basura.
 	 */
 	private String borraBasura(String cadena) {
 		String truncada = cadena;
@@ -89,17 +87,22 @@ public class ParseadorComandos {
 	 * a partir del comando.
 	 * 
 	 * @param comando Comnado a partir del cual se va a construir
-	 * la orden
-	 * @return orden construida
+	 * la orden.
+	 * @return Orden construida.
 	 */
-	private Orden construirOrden(Orden orden, Comandos comando, String[] argumentos) {
-		if ( orden instanceof OrdenCiclista ) {
-			OrdenCiclista ordenciclista = (OrdenCiclista) orden;
+	private Orden construirOrden(Comandos comando, String[] argumentos) {
+		Orden orden = comando.getOrden();
+		
+		if ( orden instanceof OrdenAumentarCadencia ) {
+			OrdenAumentarCadencia ordenAumentarCadencia = (OrdenAumentarCadencia) orden;
 			
-			ordenciclista.setComando(comando);
-			ordenciclista.setIdCilista(Integer.valueOf(argumentos[1]).intValue());
+			ordenAumentarCadencia.setComando(comando);
 		}
 		
 		return orden;
+	}
+	
+	private void determiaCiclista(Orden orden) {
+		
 	}
 }

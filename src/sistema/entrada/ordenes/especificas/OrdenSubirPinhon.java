@@ -9,8 +9,10 @@ public class OrdenSubirPinhon extends Orden {
 	
 	public OrdenSubirPinhon(){
 		
-		
 	}
 	
-
+	@Override
+	public void ejecutarOrden() {
+		ciclista.aumentarPinhon();
+	}
 }

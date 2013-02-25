@@ -61,8 +61,8 @@ public class TestBicicleta {
 		
 		double velocidadesperada = utilidadesBicicleta.velocidadDeBici(utilidadesCiclista.getCadencia(), 
 																	bicicleta.getRadiorueda(), 
-																	bicicleta.getPlatos()[bicicleta.getPlatoactual()], 
-																	bicicleta.getPinhones()[bicicleta.getPinhonactual()]);
+																	bicicleta.getPlatoactual(), 
+																	bicicleta.getPinhonactual());
 		
 		
 		assertEquals("Error: La velocidad de la bicicleta no es la correcta", velocidadesperada, bicicleta.getVelocidad(), 0);
@@ -71,18 +71,18 @@ public class TestBicicleta {
 		//se comprueba que el espacio de la pedalada sea el esperado
 		
 		double espaciodelapedaladaesperado = utilidadesBicicleta.espacioDePedalada(bicicleta.getRadiorueda(), 
-																	   bicicleta.getPlatos()[bicicleta.getPlatoactual()], 
-																	   bicicleta.getPinhones()[bicicleta.getPinhonactual()]);
+																	   bicicleta.getPlatoactual(), 
+																	   bicicleta.getPinhonactual());
 		
-		assertEquals("Error: El espacio recorrido de la bicicleta no es el correcta", espaciodelapedaladaesperado, utilidadesBicicleta.espacioDePedalada(bicicleta.getRadiorueda(), bicicleta.getPlatos()[bicicleta.getPlatoactual()], bicicleta.getPinhones()[bicicleta.getPinhonactual()]), 0);
+		assertEquals("Error: El espacio recorrido de la bicicleta no es el correcta", espaciodelapedaladaesperado, utilidadesBicicleta.espacioDePedalada(bicicleta.getRadiorueda(), bicicleta.getPlatoactual(), bicicleta.getPinhonactual()), 0);
 		
 		
 		//se comprueba que la relacion de transmision sea la esperada
 		
-		double relaciondeetransmisionesperado = utilidadesBicicleta.relacionDeTransmision(bicicleta.getPlatos()[bicicleta.getPlatoactual()],
-																					     bicicleta.getPinhones()[bicicleta.getPinhonactual()]);
+		double relaciondeetransmisionesperado = utilidadesBicicleta.relacionDeTransmision(bicicleta.getPlatoactual(),
+																					     bicicleta.getPinhonactual());
 		
-		assertEquals("Error: El espacio recorrido de la bicicleta no es el correcta", relaciondeetransmisionesperado, utilidadesBicicleta.relacionDeTransmision(bicicleta.getPlatos()[bicicleta.getPlatoactual()], bicicleta.getPinhones()[bicicleta.getPinhonactual()]), 0);
+		assertEquals("Error: El espacio recorrido de la bicicleta no es el correcta", relaciondeetransmisionesperado, utilidadesBicicleta.relacionDeTransmision(bicicleta.getPlatoactual(), bicicleta.getPinhonactual()), 0);
 		
 		
 		//se comprueba que el recorrido lineal sea el esperado
@@ -100,8 +100,8 @@ public class TestBicicleta {
 		//se comprueba que la velocidad halla decrementado como esperamos despues de frenar
 		
 		double velocidadfrenado = utilidadesBicicleta.velocidadDeBici(1,bicicleta.getRadiorueda(), 
-																				bicicleta.getPlatos()[bicicleta.getPlatoactual()], 
-																				bicicleta.getPinhones()[bicicleta.getPinhonactual()]);
+																				bicicleta.getPlatoactual(), 
+																				bicicleta.getPinhonactual());
 		
 		velocidadfrenado = -(velocidadfrenado *0.1);
 		

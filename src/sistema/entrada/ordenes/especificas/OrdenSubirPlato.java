@@ -11,4 +11,8 @@ public class OrdenSubirPlato extends Orden {
 		
 	}
 
+	@Override
+	public void ejecutarOrden() {
+		ciclista.aumentarPlato();
+	}
 }

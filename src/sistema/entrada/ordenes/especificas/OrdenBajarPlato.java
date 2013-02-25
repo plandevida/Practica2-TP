@@ -7,8 +7,12 @@ public class OrdenBajarPlato extends Orden{
 	
 	private Ciclista ciclista;
 	
-	public OrdenBajarPlato(){
+	public OrdenBajarPlato() {
 		
 	}
 
+	@Override
+	public void ejecutarOrden() {
+		ciclista.disminuirPlato();
+	}
 }

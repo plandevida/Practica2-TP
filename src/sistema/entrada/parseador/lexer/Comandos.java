@@ -4,7 +4,6 @@ import sistema.entrada.ordenes.Orden;
 import sistema.entrada.ordenes.especificas.OrdenAumentarCadencia;
 import sistema.entrada.ordenes.especificas.OrdenBajarPinhon;
 import sistema.entrada.ordenes.especificas.OrdenBajarPlato;
-import sistema.entrada.ordenes.especificas.OrdenCiclista;
 import sistema.entrada.ordenes.especificas.OrdenDesconocida;
 import sistema.entrada.ordenes.especificas.OrdenFrenar;
 import sistema.entrada.ordenes.especificas.OrdenSubirPinhon;

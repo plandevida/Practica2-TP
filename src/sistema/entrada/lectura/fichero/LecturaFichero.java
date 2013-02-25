@@ -36,16 +36,18 @@ public class LecturaFichero implements InterfazLectura {
 			return cadena;
 		} catch (IOException e) {
 //			System.err.println("No está lista la lectura por fichero");
-		} finally {
-			if (fileinput != null) {
-				try {
-					fileinput.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
 		}
 		
 		return cadena;
+	}
+	
+	/**
+	 * Cierra el flujo de lectura.
+	 * @throws IOException 
+	 */
+	public void finalizar() throws IOException {
+		if (fileinput != null) {
+			fileinput.close();
+		}
 	}
 }

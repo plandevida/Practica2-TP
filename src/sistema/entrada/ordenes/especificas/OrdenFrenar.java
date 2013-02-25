@@ -11,4 +11,9 @@ public class OrdenFrenar extends Orden{
 	
 	}
 
+	@Override
+	public void ejecutarOrden() {
+		ciclista.frenar();
+	}
+
 }

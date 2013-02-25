@@ -6,9 +6,9 @@ import sistema.entidades.personas.ciclistas.Ciclista;
 public class OrdenBajarPinhon extends Orden{
 	
 	private Ciclista ciclista;
-	
-	public OrdenBajarPinhon(){
-		
-	}
 
+	@Override
+	public void ejecutarOrden() {
+		ciclista.aumentarPinhon();
+	}
 }
