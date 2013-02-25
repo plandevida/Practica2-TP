@@ -1,8 +1,14 @@
 package sistema.entrada.parseador.lexer;
 
 import sistema.entrada.ordenes.Orden;
+import sistema.entrada.ordenes.especificas.OrdenAumentarCadencia;
+import sistema.entrada.ordenes.especificas.OrdenBajarPinhon;
+import sistema.entrada.ordenes.especificas.OrdenBajarPlato;
 import sistema.entrada.ordenes.especificas.OrdenCiclista;
 import sistema.entrada.ordenes.especificas.OrdenDesconocida;
+import sistema.entrada.ordenes.especificas.OrdenFrenar;
+import sistema.entrada.ordenes.especificas.OrdenSubirPinhon;
+import sistema.entrada.ordenes.especificas.OrdenSubirPlato;
 
 /**
  * Instrucciones que se pueden mandar al sistema para que realize
@@ -15,32 +21,32 @@ public enum Comandos {
 	/**
 	 * Disminuye la velocidad de la bicicleta
 	 */
-	FRENAR(new OrdenCiclista()),
+	FRENAR(new OrdenFrenar()),
 	
 	/**
 	 * Aumenta de piñón la bicicleta
 	 */
-	SUBIRPINHON(new OrdenCiclista()),
+	SUBIRPINHON(new OrdenSubirPinhon()),
 	
 	/**
 	 * Disminuye el piñón de la bicicleta
 	 */
-	BAJARPINHON(new OrdenCiclista()),
+	BAJARPINHON(new OrdenBajarPinhon()),
 	
 	/**
 	 * Aumenta el plato de la bicicleta
 	 */
-	SUBIRPALTO(new OrdenCiclista()),
+	SUBIRPLATO(new OrdenSubirPlato()),
 	
 	/**
 	 * Disminuye el plato de la bicicleta
 	 */
-	BAJARPLATO(new OrdenCiclista()),
+	BAJARPLATO(new OrdenBajarPlato()),
 	
 	/**
 	 * Aumenta la cadencia del ciclista
 	 */
-	AUMENTARCADENCIA(new OrdenCiclista()),
+	AUMENTARCADENCIA(new OrdenAumentarCadencia()),
 	
 	/**
 	 * Comando usado cuando la instrucción proporcionada

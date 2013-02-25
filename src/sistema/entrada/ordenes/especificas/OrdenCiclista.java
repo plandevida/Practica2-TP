@@ -1,3 +1,5 @@
+/** NO SE ESTA UTILIZANDO **/
+
 package sistema.entrada.ordenes.especificas;
 
 import sistema.entidades.personas.ciclistas.Ciclista;
@@ -14,7 +16,7 @@ public class OrdenCiclista extends Orden {
 	/**
 	 * Identificador único del ciclista.
 	 */
-	private int numeromallotciclista;
+	protected int numeromallotciclista;
 	
 	/**
 	 * Obtiene el número del mallot del ciclista,
