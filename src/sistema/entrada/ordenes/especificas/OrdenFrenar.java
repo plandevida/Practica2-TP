@@ -4,7 +4,7 @@ import sistema.entrada.ordenes.OrdenParaCiclista;
 
 public class OrdenFrenar extends OrdenParaCiclista {
 	
-	public OrdenFrenar(){
+	public OrdenFrenar() {
 	
 	}
 

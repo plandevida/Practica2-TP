@@ -63,6 +63,7 @@ public class Manager {
 		while ( reloj.getHoras() < 200000 ) {
 			
 			parser.parsearComando(lector.leerTeclado());
+			parser.parsearComando(lector.leerFichero());
 			parser.dispatch();
 			
 			for (ObjetosQueSeEjecutan objetoejecutable : listaejecutables) {
@@ -70,6 +71,13 @@ public class Manager {
 			}
 //			salidadatos.mostrarDatos();
 		}
+	}
+	
+	/**
+	 * Finaliza el contexto de la aplicación.
+	 */
+	public void finalizar() {
+		lector.finalizarLecturas();
 	}
 	
 	/**

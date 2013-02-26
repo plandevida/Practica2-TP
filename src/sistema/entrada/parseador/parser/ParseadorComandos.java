@@ -6,9 +6,6 @@ import sistema.entidades.personas.ciclistas.Ciclista;
 import sistema.entrada.ordenes.Dispatcher;
 import sistema.entrada.ordenes.Orden;
 import sistema.entrada.ordenes.OrdenParaCiclista;
-import sistema.entrada.ordenes.especificas.OrdenAumentarCadencia;
-import sistema.entrada.ordenes.especificas.OrdenFrenar;
-import sistema.entrada.ordenes.especificas.OrdenSubirPinhon;
 import sistema.entrada.parseador.lexer.Comandos;
 import sistema.interfaces.ObjetosQueSeEjecutan;
 
@@ -103,16 +100,42 @@ public class ParseadorComandos {
 	private Orden construirOrden(Comandos comando, String[] argumentos) {
 		Orden orden = comando.getOrden();
 		
-		if ( orden instanceof OrdenAumentarCadencia ) {
+		if ( orden instanceof OrdenParaCiclista ) {
+			OrdenParaCiclista ordenciclista = (OrdenParaCiclista) orden;
 			
-			OrdenAumentarCadencia ordenaumentarcadencia = (OrdenAumentarCadencia) orden;
-			determinaCiclista(ordenaumentarcadencia, argumentos);
-			
-		} else if ( orden instanceof OrdenFrenar ) {
-			
-			OrdenFrenar ordenfrenarfrenar = (OrdenFrenar) orden;
-			determinaCiclista(ordenfrenarfrenar, argumentos);
+			determinaCiclista(ordenciclista, argumentos);
 		}
+		
+//		if ( orden instanceof OrdenAumentarCadencia ) {
+//			
+//			OrdenAumentarCadencia ordenaumentarcadencia = (OrdenAumentarCadencia) orden;
+//			determinaCiclista(ordenaumentarcadencia, argumentos);
+//			
+//		} else if ( orden instanceof OrdenFrenar ) {
+//			
+//			OrdenFrenar ordenfrenarfrenar = (OrdenFrenar) orden;
+//			determinaCiclista(ordenfrenarfrenar, argumentos);
+//			
+//		} else if ( orden instanceof OrdenBajarPinhon ) {
+//			
+//			OrdenBajarPinhon ordenfrenarfrenar = (OrdenBajarPinhon) orden;
+//			determinaCiclista(ordenfrenarfrenar, argumentos);
+//			
+//		} else if ( orden instanceof OrdenBajarPlato ) {
+//			
+//			OrdenBajarPlato ordenfrenarfrenar = (OrdenBajarPlato) orden;
+//			determinaCiclista(ordenfrenarfrenar, argumentos);
+//			
+//		} else if ( orden instanceof OrdenSubirPinhon ) {
+//			
+//			OrdenSubirPinhon ordenfrenarfrenar = (OrdenSubirPinhon) orden;
+//			determinaCiclista(ordenfrenarfrenar, argumentos);
+//			
+//		} else if ( orden instanceof OrdenSubirPlato ) {
+//			
+//			OrdenSubirPlato ordenfrenarfrenar = (OrdenSubirPlato) orden;
+//			determinaCiclista(ordenfrenarfrenar, argumentos);
+//		}
 		
 		return orden;
 	}

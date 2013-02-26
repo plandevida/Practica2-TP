@@ -1,5 +1,6 @@
 package sistema.entrada.lectura.fichero;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,13 +10,13 @@ import sistema.entrada.lectura.InterfazLectura;
 
 public class LecturaFichero implements InterfazLectura {
 
-	private FileReader fileinput;
+	private BufferedReader fileinput;
 	
 	public LecturaFichero(String file) {
 		try {
-			fileinput = new FileReader(new File(file));
+			fileinput = new BufferedReader(new FileReader(new File(file)));
 		} catch (FileNotFoundException f) {
-//			System.err.println("El fichero no existe");
+			System.err.println("El fichero no existe");
 		}
 	}
 
@@ -35,7 +36,7 @@ public class LecturaFichero implements InterfazLectura {
 			
 			return cadena;
 		} catch (IOException e) {
-//			System.err.println("No está lista la lectura por fichero");
+//			System.err.println("Error al leer el fichero o no está lista la lectura por fichero");
 		}
 		
 		return cadena;

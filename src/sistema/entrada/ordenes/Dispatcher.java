@@ -36,13 +36,13 @@ public class Dispatcher {
 	 */
 	public void dispatch() {
 		
-		if (listadeordenes.peek() != null) {
+		while ( ! listadeordenes.isEmpty()) {
 			
-			for (Orden orden : listadeordenes) {
-				
+			Orden orden = listadeordenes.poll();
+			
+			if ( orden != null) {
 				orden.ejecutarOrden();
-				listadeordenes.remove();
-			}	
-		}
+			}
+		}	
 	}
 }

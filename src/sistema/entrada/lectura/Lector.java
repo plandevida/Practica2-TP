@@ -1,7 +1,5 @@
 package sistema.entrada.lectura;
 
-import java.io.IOException;
-
 import sistema.entrada.lectura.fichero.LecturaFichero;
 import sistema.entrada.lectura.teclado.LecturaTeclado;
 
@@ -42,7 +40,7 @@ public class Lector {
 		try {
 			teclado.finalizar();
 			fichero.finalizar();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			correcto = false;
 		}
 		
