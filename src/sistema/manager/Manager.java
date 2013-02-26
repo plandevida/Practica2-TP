@@ -88,5 +88,6 @@ public class Manager {
 		
 		manager.iniciar();
 		manager.ejecutar();
+		manager.finalizar();
 	}
 }
