@@ -1,11 +1,9 @@
 package sistema.entrada.ordenes.especificas;
 
-import sistema.entrada.ordenes.Orden;
-import sistema.entidades.personas.ciclistas.Ciclista;
+import sistema.entrada.ordenes.OrdenParaCiclista;
 
-public class OrdenAumentarCadencia extends Orden {
+public class OrdenAumentarCadencia extends OrdenParaCiclista {
 	
-	private Ciclista ciclista;
 	private int aumentocadencia;
 	
 	public OrdenAumentarCadencia() {
@@ -14,6 +12,6 @@ public class OrdenAumentarCadencia extends Orden {
 	
 	@Override
 	public void ejecutarOrden() {
-		ciclista.setCadencia(aumentocadencia);
+		getCiclista().setCadencia(aumentocadencia);
 	}
 }

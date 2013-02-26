@@ -33,8 +33,22 @@ public class Ciclista extends Persona implements ObjetosConSalidaDeDatos {
 	 * Variable que dice si el ciclista esta frenando.
 	 */
 	private boolean frenando = false;
-
-	public Ciclista(String nombre, int numeromallot, double cadenciaCiclista, Bicicleta bicicletaamontar, Reloj relojCiclista) {
+	
+	/**
+	 * Número único del ciclista en la carrera
+	 */
+	private int numeromallot;
+	
+	/**
+	 * Crea un ciclista.
+	 * 
+	 * @param nombre
+	 * @param numeromallot
+	 * @param cadenciaCiclista
+	 * @param bicicletaamontar
+	 * @param relojCiclista
+	 */
+	public Ciclista(String nombre, int nummallot, double cadenciaCiclista, Bicicleta bicicletaamontar, Reloj relojCiclista) {
 		/**
 		 * Demomento el peso no es relevante, ni el cansancio
 		 * 
@@ -44,6 +58,7 @@ public class Ciclista extends Persona implements ObjetosConSalidaDeDatos {
 		cadencia = cadenciaCiclista;
 		bicicletamontada = bicicletaamontar;
 		reloj = relojCiclista;
+		numeromallot = nummallot;
 	}
 	
 	/**
@@ -204,5 +219,14 @@ public class Ciclista extends Persona implements ObjetosConSalidaDeDatos {
 	 */
 	public void setCadencia(int cadencia) {
 		this.cadencia = cadencia;
+	}
+	
+	/**
+	 * Obtiene el número del mallot del ciclista.
+	 * 
+	 * @return Número del mallot.
+	 */
+	public int getNumeromallot() {
+		return numeromallot;
 	}
 }

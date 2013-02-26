@@ -1,14 +1,11 @@
 package sistema.entrada.ordenes.especificas;
 
-import sistema.entrada.ordenes.Orden;
-import sistema.entidades.personas.ciclistas.Ciclista;
+import sistema.entrada.ordenes.OrdenParaCiclista;
 
-public class OrdenBajarPinhon extends Orden{
+public class OrdenBajarPinhon extends OrdenParaCiclista {
 	
-	private Ciclista ciclista;
-
 	@Override
 	public void ejecutarOrden() {
-		ciclista.aumentarPinhon();
+		getCiclista().aumentarPinhon();
 	}
 }

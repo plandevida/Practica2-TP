@@ -1,11 +1,8 @@
 package sistema.entrada.ordenes.especificas;
 
-import sistema.entrada.ordenes.Orden;
-import sistema.entidades.personas.ciclistas.Ciclista;
+import sistema.entrada.ordenes.OrdenParaCiclista;
 
-public class OrdenSubirPlato extends Orden {
-	
-	private Ciclista ciclista;
+public class OrdenSubirPlato extends OrdenParaCiclista {
 	
 	public OrdenSubirPlato(){
 		
@@ -13,6 +10,6 @@ public class OrdenSubirPlato extends Orden {
 
 	@Override
 	public void ejecutarOrden() {
-		ciclista.aumentarPlato();
+		getCiclista().aumentarPlato();
 	}
 }

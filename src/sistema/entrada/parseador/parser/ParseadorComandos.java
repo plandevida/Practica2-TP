@@ -1,9 +1,14 @@
 package sistema.entrada.parseador.parser;
 
+import java.util.List;
+
+import sistema.entidades.personas.ciclistas.Ciclista;
 import sistema.entrada.ordenes.Dispatcher;
 import sistema.entrada.ordenes.Orden;
+import sistema.entrada.ordenes.OrdenParaCiclista;
 import sistema.entrada.ordenes.especificas.OrdenAumentarCadencia;
 import sistema.entrada.parseador.lexer.Comandos;
+import sistema.interfaces.ObjetosQueSeEjecutan;
 
 /**
  * Clase que contruye la orden para el sistema a partir
@@ -18,13 +23,16 @@ public class ParseadorComandos {
 	 * Distribuidor de ordenes
 	 */
 	private Dispatcher distribuidor;
+	private List<ObjetosQueSeEjecutan> listadeelementos;
 	
-	public ParseadorComandos() {
+	public ParseadorComandos(List<ObjetosQueSeEjecutan> lista) {
 		distribuidor = new Dispatcher();
+		listadeelementos = lista;
 	}
 	
-	public ParseadorComandos(Dispatcher dispatcher) {
+	public ParseadorComandos(Dispatcher dispatcher, List<ObjetosQueSeEjecutan> lista) {
 		distribuidor = dispatcher;
+		listadeelementos = lista;
 	}
 	
 	/**
@@ -96,13 +104,32 @@ public class ParseadorComandos {
 		if ( orden instanceof OrdenAumentarCadencia ) {
 			OrdenAumentarCadencia ordenAumentarCadencia = (OrdenAumentarCadencia) orden;
 			
-			ordenAumentarCadencia.setComando(comando);
+			determinaCiclista(ordenAumentarCadencia, argumentos);
 		}
 		
 		return orden;
 	}
 	
-	private void determiaCiclista(Orden orden) {
+	/**
+	 * Configura el contexto de una orden.
+	 * 
+	 * @param orden
+	 * @param argumentos
+	 */
+	private void determinaCiclista(OrdenParaCiclista orden, String[] argumentos) {
 		
+		int numeromallot = Integer.valueOf(argumentos[1]).intValue();
+		
+		for (ObjetosQueSeEjecutan objetoejecutable : listadeelementos) {
+			
+			if (objetoejecutable instanceof Ciclista) {
+				
+				Ciclista ciclista = (Ciclista) objetoejecutable;
+				
+				if (numeromallot == ciclista.getNumeromallot()) {
+					orden.setCiclista(ciclista);
+				}
+			}
+		}
 	}
 }

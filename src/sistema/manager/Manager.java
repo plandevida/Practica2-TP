@@ -33,11 +33,6 @@ public class Manager {
 	 */
 	public void iniciar() {
 		
-		dispatcher = new Dispatcher();
-		parser = new ParseadorComandos(dispatcher);
-		
-		lector = new Lector("prueba");
-		
 		reloj = new Reloj();
 		bicicleta = new Bicicleta();
 		ciclista = new Ciclista("Pamela", 1, 0.5, bicicleta, reloj);
@@ -53,6 +48,11 @@ public class Manager {
 		salidadatos.registrarObjetoConSalidaDatos(reloj);
 		salidadatos.registrarObjetoConSalidaDatos(bicicleta);
 		salidadatos.registrarObjetoConSalidaDatos(ciclista);
+		
+		dispatcher = new Dispatcher();
+		parser = new ParseadorComandos(dispatcher, listaejecutables);
+		
+		lector = new Lector("prueba");
 	}
 	
 	/**
