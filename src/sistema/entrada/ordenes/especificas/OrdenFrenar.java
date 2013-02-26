@@ -12,5 +12,4 @@ public class OrdenFrenar extends OrdenParaCiclista {
 	public void ejecutarOrden() {
 		getCiclista().frenar();
 	}
-
 }

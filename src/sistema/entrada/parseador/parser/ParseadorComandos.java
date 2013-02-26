@@ -7,6 +7,8 @@ import sistema.entrada.ordenes.Dispatcher;
 import sistema.entrada.ordenes.Orden;
 import sistema.entrada.ordenes.OrdenParaCiclista;
 import sistema.entrada.ordenes.especificas.OrdenAumentarCadencia;
+import sistema.entrada.ordenes.especificas.OrdenFrenar;
+import sistema.entrada.ordenes.especificas.OrdenSubirPinhon;
 import sistema.entrada.parseador.lexer.Comandos;
 import sistema.interfaces.ObjetosQueSeEjecutan;
 
@@ -102,9 +104,14 @@ public class ParseadorComandos {
 		Orden orden = comando.getOrden();
 		
 		if ( orden instanceof OrdenAumentarCadencia ) {
-			OrdenAumentarCadencia ordenAumentarCadencia = (OrdenAumentarCadencia) orden;
 			
-			determinaCiclista(ordenAumentarCadencia, argumentos);
+			OrdenAumentarCadencia ordenaumentarcadencia = (OrdenAumentarCadencia) orden;
+			determinaCiclista(ordenaumentarcadencia, argumentos);
+			
+		} else if ( orden instanceof OrdenFrenar ) {
+			
+			OrdenFrenar ordenfrenarfrenar = (OrdenFrenar) orden;
+			determinaCiclista(ordenfrenarfrenar, argumentos);
 		}
 		
 		return orden;
