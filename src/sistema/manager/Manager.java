@@ -63,13 +63,26 @@ public class Manager {
 		while ( reloj.getHoras() < 200000 ) {
 			
 			parser.parsearComando(lector.leerTeclado());
-			parser.parsearComando(lector.leerFichero());
+			//parser.parsearComando(lector.leerFichero());
 			parser.dispatch();
 			
 			for (ObjetosQueSeEjecutan objetoejecutable : listaejecutables) {
 				objetoejecutable.ejecutar();
 			}
-//			salidadatos.mostrarDatos();
+			
+			
+			if(reloj.getImpulsos()%100 == 0){
+				try {
+					Thread.sleep(2000);
+				}	
+				
+				catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				}
+			}
+			
+			salidadatos.mostrarDatos();
 		}
 	}
 	
