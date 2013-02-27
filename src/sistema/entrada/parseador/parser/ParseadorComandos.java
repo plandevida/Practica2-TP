@@ -50,7 +50,12 @@ public class ParseadorComandos {
 		// (residentes en el último token)
 		argumentos[argumentos.length - 1] = borraBasura(argumentos[argumentos.length - 1]);
 		
+		//Comprueba que los argumentos tengan el tamaño adecuado
+		if (argumentos.length < 2){
+			argumentos[0]="DESCONOCIDO";
+		}
 		Comandos comandoparseado = Comandos.existe(argumentos[0]);
+		
 		
 		Orden orden = construirOrden(comandoparseado, argumentos);
 		
@@ -103,7 +108,7 @@ public class ParseadorComandos {
 		if ( orden instanceof OrdenParaCiclista ) {
 			OrdenParaCiclista ordenciclista = (OrdenParaCiclista) orden;
 			
-			determinaCiclista(ordenciclista, argumentos);
+				determinaCiclista(ordenciclista, argumentos);
 		}
 		
 //		if ( orden instanceof OrdenAumentarCadencia ) {
