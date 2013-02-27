@@ -106,37 +106,6 @@ public class ParseadorComandos {
 			determinaCiclista(ordenciclista, argumentos);
 		}
 		
-//		if ( orden instanceof OrdenAumentarCadencia ) {
-//			
-//			OrdenAumentarCadencia ordenaumentarcadencia = (OrdenAumentarCadencia) orden;
-//			determinaCiclista(ordenaumentarcadencia, argumentos);
-//			
-//		} else if ( orden instanceof OrdenFrenar ) {
-//			
-//			OrdenFrenar ordenfrenarfrenar = (OrdenFrenar) orden;
-//			determinaCiclista(ordenfrenarfrenar, argumentos);
-//			
-//		} else if ( orden instanceof OrdenBajarPinhon ) {
-//			
-//			OrdenBajarPinhon ordenfrenarfrenar = (OrdenBajarPinhon) orden;
-//			determinaCiclista(ordenfrenarfrenar, argumentos);
-//			
-//		} else if ( orden instanceof OrdenBajarPlato ) {
-//			
-//			OrdenBajarPlato ordenfrenarfrenar = (OrdenBajarPlato) orden;
-//			determinaCiclista(ordenfrenarfrenar, argumentos);
-//			
-//		} else if ( orden instanceof OrdenSubirPinhon ) {
-//			
-//			OrdenSubirPinhon ordenfrenarfrenar = (OrdenSubirPinhon) orden;
-//			determinaCiclista(ordenfrenarfrenar, argumentos);
-//			
-//		} else if ( orden instanceof OrdenSubirPlato ) {
-//			
-//			OrdenSubirPlato ordenfrenarfrenar = (OrdenSubirPlato) orden;
-//			determinaCiclista(ordenfrenarfrenar, argumentos);
-//		}
-		
 		return orden;
 	}
 	

@@ -60,7 +60,6 @@ public class SalidaDatos {
 			for (ObjetosConSalidaDeDatos objetoamostrar : registroobjetossalidadatos) {
 
 				int numerodetokens = objetoamostrar.mostrarDatos().countTokens();
-				System.out.println(numerodetokens);
 				StringTokenizer mensaje = objetoamostrar.mostrarDatos();
 
 				switch (numerodetokens) {
@@ -77,7 +76,7 @@ public class SalidaDatos {
 					System.out.println("-- Ciclista --");
 					System.out.println("nombre: " + mensaje.nextElement());
 					System.out.println("peso: " + mensaje.nextElement());
-					System.out.println("cansancio: " + mensaje.nextElement());
+					System.out.println("cadencia: " + mensaje.nextElement());
 					
 					break;
 

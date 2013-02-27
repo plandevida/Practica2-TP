@@ -34,16 +34,11 @@ public class LecturaTeclado implements InterfazLectura {
 
 			if (lectura.ready()) {
 				
-//				char[] buffer_de_lectura = new char[100];
-				
-//				lectura.read(buffer_de_lectura);
-				
 				salida = lectura.readLine();
-
-//				salida = new String(buffer_de_lectura);
 				
-				return salida;
 			}
+			
+			return salida;
 		} catch (IOException e) {
 			System.err.println("No está listo la lectura por teclado");
 			e.printStackTrace();

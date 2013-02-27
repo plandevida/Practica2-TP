@@ -30,11 +30,6 @@ public class Ciclista extends Persona implements ObjetosConSalidaDeDatos {
 	private double cadencia;
 	
 	/**
-	 * Variable que dice si el ciclista esta frenando.
-	 */
-	private boolean frenando = false;
-	
-	/**
 	 * Número único del ciclista en la carrera
 	 */
 	private int numeromallot;
@@ -69,18 +64,7 @@ public class Ciclista extends Persona implements ObjetosConSalidaDeDatos {
 	 */
 	@Override
 	public boolean ejecutar() {
-		if ( !frenando ) {
-			if (bicicletamontada.getVelocidad() < 30)
-				pedalear();
-			else
-				frenando = true;
-		}
-		else {
-			if (bicicletamontada.getVelocidad() < 15)
-				frenando = false;
-				
-			frenar();
-		}
+		pedalear();
 		
 		return true;
 	}

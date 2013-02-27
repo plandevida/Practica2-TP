@@ -4,7 +4,6 @@ import java.util.StringTokenizer;
 
 import sistema.entidades.veiculos.Veiculo;
 import sistema.interfaces.ObjetosConSalidaDeDatos;
-import sistema.interfaces.ObjetosQueSeEjecutan;
 
 
 /**
@@ -13,7 +12,7 @@ import sistema.interfaces.ObjetosQueSeEjecutan;
  * @author Daniel Serrano Torres
  * @author Alvaro Quesada Pimentel
  */
-public class Bicicleta extends Veiculo implements ObjetosQueSeEjecutan, ObjetosConSalidaDeDatos {
+public class Bicicleta extends Veiculo implements ObjetosConSalidaDeDatos {
 
 	// El array representa los piñones de la bicicleta con el indice
 	// del array y su valor es el número de dientes del piñón
@@ -37,11 +36,6 @@ public class Bicicleta extends Veiculo implements ObjetosQueSeEjecutan, ObjetosC
 		setPinhonactual(0);
 		setPlatoactual(0);
 		radiorueda = 0.2d;
-	}
-
-	public boolean ejecutar() {
-
-		return true;
 	}
 
 	/**
@@ -87,7 +81,7 @@ public class Bicicleta extends Veiculo implements ObjetosQueSeEjecutan, ObjetosC
 	 * @param cadenciaciclista Frecuencia con la que el ciclista da pedaladas.
 	 * @return La velocidad de la bicicleta.
 	 */
-	private double velocidadDeBici(double cadenciaciclista) {
+	private double calcularVelocidadCadencia(double cadenciaciclista) {
 
 		double velocidadbici = espacioDePedalada() / cadenciaciclista;
 
@@ -112,7 +106,7 @@ public class Bicicleta extends Veiculo implements ObjetosQueSeEjecutan, ObjetosC
 	 * @param cadenciaciclista Frecuencia con la que el ciclista da pedaladas. 
 	 */
 	public void darPedalada(double cadenciaciclista) {
-		double velocidad = velocidadDeBici(cadenciaciclista);
+		double velocidad = calcularVelocidadCadencia(cadenciaciclista);
 		
 		setEspacioRecorrido(espacioDePedalada());
 		setVelocidad(velocidad);
@@ -122,11 +116,11 @@ public class Bicicleta extends Veiculo implements ObjetosQueSeEjecutan, ObjetosC
 	 * Decrementa la velocidad de la bicicleta.
 	 */
 	public void frenar() {
-		double velocidad = velocidadDeBici(1);
+		double velocidad = getVelocidad();
 		
 		setEspacioRecorrido(espacioDePedalada());
 		
-		double decrementovelocidad = velocidad * 0.1;
+		double decrementovelocidad = velocidad * 0.2;
 		
 		setVelocidadIncremento(-decrementovelocidad);
 	}
