@@ -32,7 +32,7 @@ public class LecturaTeclado implements InterfazLectura {
 		
 		try { 
 
-			if (lectura.ready()) {
+			if (lectura != null && lectura.ready()) {
 				
 				salida = lectura.readLine();
 				

@@ -26,19 +26,14 @@ public class LecturaFichero implements InterfazLectura {
 		String cadena = "";
 		
 		try {
-			if (fileinput.ready()) {
-				char[] buffer = new char[512];
+			if (fileinput != null && fileinput.ready()) {
 				
-				fileinput.read(buffer);
+				cadena = fileinput.readLine();
 				
-				cadena = buffer.toString();
-			}
-			
+			}			
 			return cadena;
 		} catch (IOException e) {
 //			System.err.println("Error al leer el fichero o no está lista la lectura por fichero");
-		} catch (Exception e) {
-			
 		}
 		
 		return cadena;
