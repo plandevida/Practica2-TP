@@ -50,12 +50,11 @@ public class ParseadorComandos {
 		// (residentes en el último token)
 		argumentos[argumentos.length - 1] = borraBasura(argumentos[argumentos.length - 1]);
 		
-		//Comprueba que los argumentos tengan el tamaño adecuado
-		if (argumentos.length < 2){
+		if (argumentos.length < 2) {
 			argumentos[0]="DESCONOCIDO";
 		}
-		Comandos comandoparseado = Comandos.existe(argumentos[0]);
 		
+		Comandos comandoparseado = Comandos.existe(argumentos[0]);
 		
 		Orden orden = construirOrden(comandoparseado, argumentos);
 		
@@ -108,39 +107,8 @@ public class ParseadorComandos {
 		if ( orden instanceof OrdenParaCiclista ) {
 			OrdenParaCiclista ordenciclista = (OrdenParaCiclista) orden;
 			
-				determinaCiclista(ordenciclista, argumentos);
+			determinaCiclista(ordenciclista, argumentos);
 		}
-		
-//		if ( orden instanceof OrdenAumentarCadencia ) {
-//			
-//			OrdenAumentarCadencia ordenaumentarcadencia = (OrdenAumentarCadencia) orden;
-//			determinaCiclista(ordenaumentarcadencia, argumentos);
-//			
-//		} else if ( orden instanceof OrdenFrenar ) {
-//			
-//			OrdenFrenar ordenfrenarfrenar = (OrdenFrenar) orden;
-//			determinaCiclista(ordenfrenarfrenar, argumentos);
-//			
-//		} else if ( orden instanceof OrdenBajarPinhon ) {
-//			
-//			OrdenBajarPinhon ordenfrenarfrenar = (OrdenBajarPinhon) orden;
-//			determinaCiclista(ordenfrenarfrenar, argumentos);
-//			
-//		} else if ( orden instanceof OrdenBajarPlato ) {
-//			
-//			OrdenBajarPlato ordenfrenarfrenar = (OrdenBajarPlato) orden;
-//			determinaCiclista(ordenfrenarfrenar, argumentos);
-//			
-//		} else if ( orden instanceof OrdenSubirPinhon ) {
-//			
-//			OrdenSubirPinhon ordenfrenarfrenar = (OrdenSubirPinhon) orden;
-//			determinaCiclista(ordenfrenarfrenar, argumentos);
-//			
-//		} else if ( orden instanceof OrdenSubirPlato ) {
-//			
-//			OrdenSubirPlato ordenfrenarfrenar = (OrdenSubirPlato) orden;
-//			determinaCiclista(ordenfrenarfrenar, argumentos);
-//		}
 		
 		return orden;
 	}

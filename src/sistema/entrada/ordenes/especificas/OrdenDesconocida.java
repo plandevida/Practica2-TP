@@ -9,9 +9,10 @@ public class OrdenDesconocida extends Orden {
 	@Override
 	public void ejecutarOrden() {
 		System.err.println("NO SE RECONOCE LA ORDEN");
-		System.out.println("Ordenes del sistema: ");	
+		System.out.println("Ordenes del sistema: ");
+		
 		Comandos[] comandos = Comandos.values();
-	
+		
 		for (Comandos comando : comandos) {
 			System.out.println(comando.ordinal() + ": " + comando.name());
 		}

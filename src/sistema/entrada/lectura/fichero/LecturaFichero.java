@@ -26,7 +26,7 @@ public class LecturaFichero implements InterfazLectura {
 		String cadena = "";
 		
 		try {
-			if (fileinput.ready()) {
+			if (fileinput != null && fileinput.ready()) {
 				char[] buffer = new char[512];
 				
 				fileinput.read(buffer);
