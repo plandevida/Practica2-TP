@@ -33,7 +33,7 @@ public class LecturaFichero implements InterfazLectura {
 			}			
 			return cadena;
 		} catch (IOException e) {
-//			System.err.println("Error al leer el fichero o no está lista la lectura por fichero");
+			System.err.println("Error al leer el fichero o no está lista la lectura por fichero");
 		}
 		
 		return cadena;
