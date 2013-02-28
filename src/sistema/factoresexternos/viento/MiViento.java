@@ -1,4 +1,4 @@
-package sistema.factoresSistema.viento;
+package sistema.factoresexternos.viento;
 
 /**
  * Enumerado que representa las direcciones del viento

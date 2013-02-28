@@ -1,4 +1,4 @@
-package sistema.factoresSistema;
+package sistema.factoresexternos;
 
 /**
  * Clase que calcula los datos de los elementos climatológicos
