@@ -11,13 +11,41 @@ import sistema.entrada.lectura.InterfazLectura;
 public class LecturaFichero implements InterfazLectura {
 
 	private BufferedReader fileinput;
+	private static final String COMANDOS_PATH = "resources/instrucciones/";
+	private static final String CONFIG_PATH = "resources/configuracion/";
 	
-	public LecturaFichero(String file) {
+	public LecturaFichero(String filepath, boolean configuracion) {
+		
 		try {
-			fileinput = new BufferedReader(new FileReader(new File(file)));
+			
+			File file;
+			
+			if(configuracion) {
+				file = new File(CONFIG_PATH + filepath);
+			} else {
+				file = new File(COMANDOS_PATH + filepath);
+			}
+			
+			fileinput = new BufferedReader(new FileReader(file));
+			
 		} catch (FileNotFoundException f) {
 			System.err.println("El fichero no existe");
 		}
+	}
+	
+	public String cargarFichero() {
+		String cadena = "";
+		
+		try {
+			while(cadena.equals("EOF")) {
+				
+				cadena = fileinput.readLine();
+			}
+		} catch (IOException io) {
+			System.err.println("Error al leer el fichero de configuración de la aplicación");
+		}
+		
+		return cadena;
 	}
 
 	@Override
@@ -30,8 +58,7 @@ public class LecturaFichero implements InterfazLectura {
 				
 				cadena = fileinput.readLine();
 				
-			}			
-			return cadena;
+			}	
 		} catch (IOException e) {
 			System.err.println("Error al leer el fichero o no está lista la lectura por fichero");
 		}

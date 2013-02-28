@@ -17,7 +17,9 @@ public class Lector {
 	public Lector(String file) {
 		
 		teclado = new LecturaTeclado();
-		fichero = new LecturaFichero(file);
+		
+		// Se instancia como un lector de comandos
+		fichero = new LecturaFichero(file, false);
 	}
 	
 	public String leerTeclado() {
@@ -28,6 +30,12 @@ public class Lector {
 	public String leerFichero() {
 		
 		return fichero.leer();
+	}
+	
+	public String cargarFichero() {
+		LecturaFichero lecturaFichero = new LecturaFichero(null, true);
+		
+		return lecturaFichero.cargarFichero();
 	}
 	
 	/**

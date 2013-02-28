@@ -37,8 +37,6 @@ public class LecturaTeclado implements InterfazLectura {
 				salida = lectura.readLine();
 				
 			}
-			
-			return salida;
 		} catch (IOException e) {
 			System.err.println("No está listo la lectura por teclado");
 			e.printStackTrace();

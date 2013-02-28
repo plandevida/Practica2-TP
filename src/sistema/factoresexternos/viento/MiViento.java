@@ -37,6 +37,11 @@ public enum MiViento {
 		return wind;
 	}
 	
+	/**
+	 * Obtiene el factor del viento por el cual hay que multiplicar la velocidad
+	 * 
+	 * @return
+	 */
 	public int getFactor() {
 		return factor;
 	}

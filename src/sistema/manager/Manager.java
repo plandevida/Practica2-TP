@@ -31,6 +31,12 @@ public class Manager {
 	private ParseadorComandos parser;
 	private Lector lector;
 	
+	public void cargarConfiguracion() {
+		Lector lectorConfiguracion = new Lector("carrera");
+		
+		lectorConfiguracion.cargarFichero();
+	}
+	
 	/**
 	 * Inicializa el contexto de la aplicación.
 	 */
@@ -114,6 +120,7 @@ public class Manager {
 	public static void main(String[] args) {
 		Manager manager = new Manager();
 		
+		manager.cargarConfiguracion();
 		manager.iniciar();
 		manager.ejecutar();
 		manager.finalizar();
