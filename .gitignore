@@ -1,9 +1,8 @@
 *.class
-
 # Package Files #
-# *.jar
+*.jar
 *.war
 *.ear
+.classpath
 .DS_Store
 /bin
-.classpath
