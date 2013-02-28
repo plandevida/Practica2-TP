@@ -50,6 +50,10 @@ public class ParseadorComandos {
 		// (residentes en el último token)
 		argumentos[argumentos.length - 1] = borraBasura(argumentos[argumentos.length - 1]);
 		
+		if (argumentos.length < 2) {
+			argumentos[0]="DESCONOCIDO";
+		}
+		
 		Comandos comandoparseado = Comandos.existe(argumentos[0]);
 		
 		Orden orden = construirOrden(comandoparseado, argumentos);

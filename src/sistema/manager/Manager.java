@@ -87,6 +87,16 @@ public class Manager {
 			for (ObjetosQueSeEjecutan objetoejecutable : listaejecutables) {
 				objetoejecutable.ejecutar();
 			}
+			
+			if(reloj.getImpulsos()== 0){
+				try {
+					Thread.sleep(2000);
+				}	
+				catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+			
 			salidadatos.mostrarDatos();
 		}
 	}
