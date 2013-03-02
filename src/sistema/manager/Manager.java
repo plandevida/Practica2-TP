@@ -1,13 +1,17 @@
 package sistema.manager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import sistema.entidades.carretera.tramocarreraciclista.TramoCiclista;
 import sistema.entidades.personas.ciclistas.Ciclista;
 import sistema.entidades.tiempo.Reloj;
 import sistema.entidades.veiculos.bicicletas.Bicicleta;
 import sistema.entrada.lectura.Lector;
 import sistema.entrada.ordenes.Dispatcher;
+import sistema.entrada.parseador.parser.ParseadorCarrera;
 import sistema.entrada.parseador.parser.ParseadorComandos;
 import sistema.interfaces.ObjetosQueSeEjecutan;
 import sistema.salidadatos.SalidaDatos;
@@ -18,8 +22,18 @@ import sistema.salidadatos.SalidaDatos;
  * @author Alvaro Quesada Pimentel
  */
 public class Manager {
-
+	
+	// Contexto de los ficheros del sistema.
+	public static final String COMANDOS_FOLDER_PATH = "resources/instrucciones/";
+	public static final String CONFIG_FOLDER_PATH = "resources/configuracion/";
+	public static final String DEFAULT_CONFIG_PATH = "resources/configuracion/carrera";
+	public static final String DEFAULT_COMANDOS_PATH = "resources/instrucciones/comandos";
+	
+	
 	private List<ObjetosQueSeEjecutan> listaejecutables;
+	private Map<Integer, TramoCiclista> carreteradecarreraciclsta;
+	
+	// Entidades del sistema.
 	private SalidaDatos salidadatos;
 	private List<Ciclista> ciclistas;
 	private Bicicleta bicicleta;
@@ -27,14 +41,40 @@ public class Manager {
 	private Bicicleta bicicleta2;
 	private Bicicleta bicicleta3;
 	private Reloj reloj;
+	
+	// Elemetos del sistema
 	private Dispatcher dispatcher;
 	private ParseadorComandos parser;
 	private Lector lector;
 	
-	public void cargarConfiguracion() {
-		Lector lectorConfiguracion = new Lector("carrera");
+	/**
+	 * Carga la carretera de la carrera ciclista.
+	 */
+	private void cargarConfiguracion() {
+		Lector lectorConfiguracion = new Lector(DEFAULT_CONFIG_PATH, true);
 		
-		lectorConfiguracion.cargarFichero();
+		String configuracioncarreraciclista = lectorConfiguracion.cargarFicheroCompelto();
+		
+		construirCarretera(configuracioncarreraciclista);
+	}
+	
+	/**
+	 * Construye el mapa con la configuración de la carrera ciclista.
+	 * 
+	 * @param datos Cadena con el contenido de la carrera ciclista.
+	 */
+	private void construirCarretera(String datos) {
+		
+		carreteradecarreraciclsta = new HashMap<Integer, TramoCiclista>();
+		
+		ParseadorCarrera parseadorcarrera = new ParseadorCarrera(carreteradecarreraciclsta);
+		
+		parseadorcarrera.parse(datos);
+		
+		for(Integer dou : carreteradecarreraciclsta.keySet()) {
+			System.out.println(dou.intValue());
+			System.out.println("\t" + carreteradecarreraciclsta.get(dou));
+		}
 	}
 	
 	/**
@@ -75,7 +115,7 @@ public class Manager {
 		dispatcher = new Dispatcher();
 		parser = new ParseadorComandos(dispatcher, listaejecutables);
 		
-		lector = new Lector("prueba");
+		lector = new Lector("prueba", false);
 	}
 	
 	/**
@@ -85,8 +125,8 @@ public class Manager {
 		
 		while ( reloj.getHoras() < 200000 ) {
 			
-			parser.parsearComando(lector.leerTeclado());
-			parser.parsearComando(lector.leerFichero());
+			parser.parse(lector.leerTeclado());
+			parser.parse(lector.leerFichero());
 			parser.dispatch();
 			
 			salidadatos.mostrarDatos();
@@ -121,8 +161,8 @@ public class Manager {
 		Manager manager = new Manager();
 		
 		manager.cargarConfiguracion();
-		manager.iniciar();
-		manager.ejecutar();
-		manager.finalizar();
+//		manager.iniciar();
+//		manager.ejecutar();
+//		manager.finalizar();
 	}
 }

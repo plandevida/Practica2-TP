@@ -15,16 +15,34 @@ public class TramoCiclista extends Carretera {
 	private MiViento viento;
 	private int pendiente;
 	
+	/**
+	 * Crea un tramo de la carretera, indicandole el tamaño del tarmo,
+	 * la pendiente, y el viento.
+	 * 
+	 * @param kilometros Que mide el tarmo.
+	 * @param pendientetramo Del tramo.
+	 * @param vientodeltramo Del tramo.
+	 */
 	public TramoCiclista(double kilometros, int pendientetramo, MiViento vientodeltramo) {
 		super(kilometros);
 		viento = vientodeltramo;
 		pendiente = pendientetramo;
 	}
 	
+	/**
+	 * El viento del tramo.
+	 * 
+	 * @return Objeto viento @see {@link MiViento}
+	 */
 	public MiViento getViento() {
 		return viento;
 	}
 	
+	/**
+	 * Pendiente del tramo.
+	 * 
+	 * @return La pendiente.
+	 */
 	public int getPendiente() {
 		return pendiente;
 	}

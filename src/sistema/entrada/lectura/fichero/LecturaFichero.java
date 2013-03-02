@@ -11,35 +11,47 @@ import sistema.entrada.lectura.InterfazLectura;
 public class LecturaFichero implements InterfazLectura {
 
 	private BufferedReader fileinput;
-	private static final String COMANDOS_PATH = "resources/instrucciones/";
-	private static final String CONFIG_PATH = "resources/configuracion/";
 	
-	public LecturaFichero(String filepath, boolean configuracion) {
+	/**
+	 * Abre el flujo de un fichero con la ruta especificada.
+	 * @param filepath Ruta del fichero a leer.
+	 */
+	public LecturaFichero(String filepath) {
 		
 		try {
 			
-			File file;
+			File file = new File("");
 			
-			if(configuracion) {
-				file = new File(CONFIG_PATH + filepath);
-			} else {
-				file = new File(COMANDOS_PATH + filepath);
+			if (filepath != null) {
+				
+				file = new File(filepath);
 			}
 			
 			fileinput = new BufferedReader(new FileReader(file));
 			
 		} catch (FileNotFoundException f) {
 			System.err.println("El fichero no existe");
+		} catch (NullPointerException np) {
+			System.err.println("La ruta no es correcta: " + filepath);
 		}
 	}
 	
+	/**
+	 * Carga el contenido completo de un fichero, termina cuando
+	 * encuentra la línea EOF.
+	 * @return Contenido completo del fichero
+	 */
 	public String cargarFichero() {
-		String cadena = "";
+		String cadena = new String("");
 		
 		try {
-			while(cadena.equals("EOF")) {
+			
+			String aux = fileinput.readLine();
+			
+			while( ! aux.equals("EOF")) {
 				
-				cadena = fileinput.readLine();
+				cadena += aux + "\n";
+				aux = fileinput.readLine();
 			}
 		} catch (IOException io) {
 			System.err.println("Error al leer el fichero de configuración de la aplicación");
@@ -48,8 +60,11 @@ public class LecturaFichero implements InterfazLectura {
 		return cadena;
 	}
 
+	/**
+	 * Lectura de un fichero sin espera activa, se lee línea a línea.
+	 */
 	@Override
-	public String leer() {
+	public String leerSinEsperaActiva() {
 		
 		String cadena = "";
 		

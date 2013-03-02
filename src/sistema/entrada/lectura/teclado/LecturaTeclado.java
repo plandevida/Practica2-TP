@@ -26,7 +26,7 @@ public class LecturaTeclado implements InterfazLectura {
 	}
 	
 	@Override
-	public String leer() {
+	public String leerSinEsperaActiva() {
 		
 		String salida = "";
 		

@@ -6,6 +6,7 @@ import sistema.entidades.personas.ciclistas.Ciclista;
 import sistema.entrada.ordenes.Dispatcher;
 import sistema.entrada.ordenes.Orden;
 import sistema.entrada.ordenes.OrdenParaCiclista;
+import sistema.entrada.parseador.Parseador;
 import sistema.entrada.parseador.lexer.Comandos;
 import sistema.interfaces.ObjetosQueSeEjecutan;
 
@@ -16,7 +17,7 @@ import sistema.interfaces.ObjetosQueSeEjecutan;
  * @author Daniel Serrano Torres
  * @author Alvaro Quesada Pimentel
  */
-public class ParseadorComandos {
+public class ParseadorComandos implements Parseador {
 	
 	/**
 	 * Distribuidor de ordenes
@@ -36,13 +37,15 @@ public class ParseadorComandos {
 	
 	/**
 	 * Genera una orden para un elemento del sistema,
-	 * a partir de un comando recibido.
+	 * a partir de un comando recibido y la registra en el
+	 * dispatcher @see {@link Dispatcher#registrarOrdenes(Orden)}
 	 * 
 	 * @param comando Comando recibido.
 	 * @return La orden generada, si el comando no se reconoce
 	 * la orden contendrá un comando DESCONOCIDO @see {@link Comandos#DESCONOCIDO}
 	 */
-	public void parsearComando(String comando) {
+	@Override
+	public void parse(String comando) {
 		
 		String[] argumentos = comando.split(",");
 		

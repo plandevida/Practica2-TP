@@ -14,33 +14,55 @@ public class Lector {
 	private LecturaTeclado teclado;
 	private LecturaFichero fichero;
 	
-	public Lector(String file) {
+	/**
+	 * Crea un elemento de lectura de teclado y otro de fichero.
+	 * 
+	 * @param file Ruta del fichero a leer.
+	 * @param solofichero True si solo se quiere leer de fichero.
+	 */
+	public Lector(String file, boolean solofichero) {
 		
-		teclado = new LecturaTeclado();
+		if (! solofichero) {
+			teclado = new LecturaTeclado();
+		}
 		
-		// Se instancia como un lector de comandos
-		fichero = new LecturaFichero(file, false);
+		fichero = new LecturaFichero(file);
 	}
 	
+	/**
+	 * Lee del teclado.
+	 * 
+	 * @return Cadena leida.
+	 */
 	public String leerTeclado() {
 		
-		return teclado.leer();
+		return teclado.leerSinEsperaActiva();
 	}
 	
+	/**
+	 * Lee de un fichero especificado en el constructor.
+	 * 
+	 * @return Linea leida.
+	 */
 	public String leerFichero() {
 		
-		return fichero.leer();
+		return fichero.leerSinEsperaActiva();
 	}
 	
-	public String cargarFichero() {
-		LecturaFichero lecturaFichero = new LecturaFichero(null, true);
+	/**
+	 * Lee un fichero completo especificado en el constructor.
+	 * 
+	 * @return Contenido del fichero completo.
+	 */
+	public String cargarFicheroCompelto() {
 		
-		return lecturaFichero.cargarFichero();
+		return fichero.cargarFichero();
 	}
 	
 	/**
 	 * Cierra todos los flujos de lecturas.
-	 * @return
+	 * 
+	 * @return true si se cerró todo correctamente.
 	 */
 	public boolean finalizarLecturas() {
 		boolean correcto = true;
