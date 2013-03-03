@@ -1,7 +1,9 @@
 package sistema.entidades.veiculos.bicicletas;
 
+import java.util.Map;
 import java.util.StringTokenizer;
 
+import sistema.entidades.carretera.tramocarreraciclista.TramoCiclista;
 import sistema.entidades.veiculos.Veiculo;
 import sistema.interfaces.ObjetosConSalidaDeDatos;
 
@@ -27,10 +29,14 @@ public class Bicicleta extends Veiculo implements ObjetosConSalidaDeDatos {
 
 	// Continen el indice del plato que se esta utilizando
 	protected int pinhonactual;
-
+	
 	protected double radiorueda;
-		
-	public Bicicleta() {
+	
+	
+	protected Map<Integer, TramoCiclista> carreteradecarreraciclsta;
+	
+	public Bicicleta(Map<Integer, TramoCiclista> carreteradecarreraciclsta) {
+		this.carreteradecarreraciclsta = carreteradecarreraciclsta;
 		setVelocidad(0);
 		setEspacioRecorrido(0);
 		setPinhonactual(0);
@@ -42,12 +48,43 @@ public class Bicicleta extends Veiculo implements ObjetosConSalidaDeDatos {
 	 * Relación entre el plato y piñón que se están usando actualmente.
 	 * 
 	 * @reutrn Un entero que es relación entre ambos valores.
+	 * 
 	 */
 	private int relacionDeTransmision() {
 
 		int relaciondetrasminsion = platos[platoactual] / pinhones[pinhonactual];
 
 		return relaciondetrasminsion;
+	}
+	
+	
+	
+	/** Metodo que busca el tramo en el que esta y devuelver 
+	 * 
+	 * @return devuelve la pendiente
+	 */
+	private double pendienteTramoActual(){
+		
+		double pendiente = 0;
+		
+		Integer anterior = 0;
+		for(Integer km : carreteradecarreraciclsta.keySet()) {
+			
+			if ((int)km <= (int) getEspacioRecorrido())
+			{
+				pendiente = carreteradecarreraciclsta.get(km).getPendiente();
+			}
+			
+			
+		}
+		
+		System.out.println("angulo " +pendiente);
+		if (pendiente < 0) pendiente = 1 + Math.cos(pendiente);
+		
+		else pendiente = Math.cos(pendiente);
+		
+		System.out.println("pendiente " +pendiente);
+		return pendiente;
 	}
 	
 	/**
@@ -106,7 +143,7 @@ public class Bicicleta extends Veiculo implements ObjetosConSalidaDeDatos {
 	 * @param cadenciaciclista Frecuencia con la que el ciclista da pedaladas. 
 	 */
 	public void darPedalada(double cadenciaciclista) {
-		double velocidad = calcularVelocidadCadencia(cadenciaciclista);
+		double velocidad = calcularVelocidadCadencia(cadenciaciclista)* pendienteTramoActual();
 		
 		setEspacioRecorrido(espacioDePedalada());
 		setVelocidad(velocidad);

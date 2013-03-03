@@ -37,8 +37,14 @@ public class Reloj extends Contador implements ObjetosConSalidaDeDatos{
 	@Override
 	public void nuevoImpulso() {
 		
-		if (++impulsos >= 100) {
-			impulsos = 0;
+//		if (++impulsos >= 100) {
+//			impulsos = 0;
+			try {
+				Thread.sleep(2000);
+			}	
+			catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			if (++segundos >= 60) {
 				segundos = 0;
 				if (++minutos >= 60) {
@@ -46,7 +52,7 @@ public class Reloj extends Contador implements ObjetosConSalidaDeDatos{
 					horas++;
 				}
 			}
-		}
+//		}
 	}
 	/**
 	 * Método para obtener una salida de datos de un objeto.

@@ -71,10 +71,7 @@ public class Manager {
 		
 		parseadorcarrera.parse(datos);
 		
-		for(Integer dou : carreteradecarreraciclsta.keySet()) {
-			System.out.println(dou.intValue());
-			System.out.println("\t" + carreteradecarreraciclsta.get(dou));
-		}
+	
 	}
 	
 	/**
@@ -87,10 +84,10 @@ public class Manager {
 		ciclistas = new ArrayList<Ciclista>();
 		
 		// Bicicletas para los ciclistas.
-		bicicleta = new Bicicleta();
-		bicicleta1 = new Bicicleta();
-		bicicleta2 = new Bicicleta();
-		bicicleta3 = new Bicicleta();
+		bicicleta = new Bicicleta(carreteradecarreraciclsta);
+		bicicleta1 = new Bicicleta(carreteradecarreraciclsta);
+		bicicleta2 = new Bicicleta(carreteradecarreraciclsta);
+		bicicleta3 = new Bicicleta(carreteradecarreraciclsta);
 		
 		ciclistas.add(new Ciclista("Pamela", 1, 0.5, bicicleta, reloj));
 		ciclistas.add(new Ciclista("Pedro", 2, 1.5, bicicleta1, reloj));
@@ -128,25 +125,22 @@ public class Manager {
 		
 		while ( reloj.getHoras() < 2 ) {
 			
-			parser.parse(lector.leerTeclado());
-			parser.parse(lector.leerFichero());
-			parser.dispatch();
+//			parser.parse(lector.leerTeclado());
+//			parser.parse(lector.leerFichero());
+//			parser.dispatch();
 			
-			salidadatos.mostrarDatos();
+//			salidadatos.mostrarDatos();
 			for (ObjetosQueSeEjecutan objetoejecutable : listaejecutables) {
 				objetoejecutable.ejecutar();
 			}
 			
-			if(reloj.getImpulsos() == 0){
-				try {
-					Thread.sleep(2000);
-				}	
-				catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
 			
-			salidadatos.mostrarDatos();
+			
+			//salidadatos.mostrarDatos();
+			System.out.println("espacio " + bicicleta1.getEspacioRecorrido());
+			System.out.println("velo " + bicicleta1.getVelocidad());
+			System.out.println();
+			
 		}
 	}
 	
@@ -165,7 +159,7 @@ public class Manager {
 		
 		manager.cargarConfiguracion();
 		manager.iniciar();
-//		manager.ejecutar();
-//		manager.finalizar();
+		manager.ejecutar();
+		manager.finalizar();
 	}
 }
