@@ -8,7 +8,7 @@ import java.util.Map;
 import sistema.entidades.carretera.tramocarreraciclista.TramoCiclista;
 import sistema.entidades.personas.ciclistas.Ciclista;
 import sistema.entidades.tiempo.Reloj;
-import sistema.entidades.veiculos.bicicletas.Bicicleta;
+import sistema.entidades.vehiculos.bicicletas.Bicicleta;
 import sistema.entrada.lectura.Lector;
 import sistema.entrada.ordenes.Dispatcher;
 import sistema.entrada.parseador.parser.ParseadorCarrera;
@@ -133,8 +133,6 @@ public class Manager {
 			for (ObjetosQueSeEjecutan objetoejecutable : listaejecutables) {
 				objetoejecutable.ejecutar();
 			}
-			
-			
 			
 			//salidadatos.mostrarDatos();
 			System.out.println("espacio " + bicicleta1.getEspacioRecorrido());

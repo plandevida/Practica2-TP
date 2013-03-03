@@ -4,7 +4,7 @@ import java.util.StringTokenizer;
 
 import sistema.entidades.personas.Persona;
 import sistema.entidades.tiempo.Reloj;
-import sistema.entidades.veiculos.bicicletas.Bicicleta;
+import sistema.entidades.vehiculos.bicicletas.Bicicleta;
 import sistema.interfaces.ObjetosConSalidaDeDatos;
 
 /**

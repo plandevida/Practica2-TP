@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import sistema.entidades.veiculos.bicicletas.Bicicleta;
+import sistema.entidades.vehiculos.bicicletas.Bicicleta;
 import src.tests.utils.TestUtilidadesBicicleta;
 import src.tests.utils.TestUtilidadesCiclista;
 

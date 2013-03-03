@@ -1,11 +1,11 @@
-package sistema.entidades.veiculos;
+package sistema.entidades.vehiculos;
 
 /**
  * Clase que representa cualquier veículo del sistema
  * @author Daniel Serrano Torres
  * @author Alvaro Quesada Pimentel
  */
-public class Veiculo {
+public class Vehiculo {
 
 	protected double velocidadactual;
 	

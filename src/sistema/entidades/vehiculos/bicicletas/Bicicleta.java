@@ -1,10 +1,10 @@
-package sistema.entidades.veiculos.bicicletas;
+package sistema.entidades.vehiculos.bicicletas;
 
 import java.util.Map;
 import java.util.StringTokenizer;
 
 import sistema.entidades.carretera.tramocarreraciclista.TramoCiclista;
-import sistema.entidades.veiculos.Veiculo;
+import sistema.entidades.vehiculos.Vehiculo;
 import sistema.interfaces.ObjetosConSalidaDeDatos;
 
 
@@ -14,7 +14,7 @@ import sistema.interfaces.ObjetosConSalidaDeDatos;
  * @author Daniel Serrano Torres
  * @author Alvaro Quesada Pimentel
  */
-public class Bicicleta extends Veiculo implements ObjetosConSalidaDeDatos {
+public class Bicicleta extends Vehiculo implements ObjetosConSalidaDeDatos {
 
 	// El array representa los piñones de la bicicleta con el indice
 	// del array y su valor es el número de dientes del piñón
@@ -47,8 +47,7 @@ public class Bicicleta extends Veiculo implements ObjetosConSalidaDeDatos {
 	/**
 	 * Relación entre el plato y piñón que se están usando actualmente.
 	 * 
-	 * @reutrn Un entero que es relación entre ambos valores.
-	 * 
+	 * @return Un entero que es relación entre ambos valores.
 	 */
 	private int relacionDeTransmision() {
 
@@ -63,28 +62,26 @@ public class Bicicleta extends Veiculo implements ObjetosConSalidaDeDatos {
 	 * 
 	 * @return devuelve la pendiente
 	 */
-	private double pendienteTramoActual(){
+	private double pendienteTramoActual() {
 		
-		double pendiente = 0;
+		int pendiente = 0;
 		
-		Integer anterior = 0;
 		for(Integer km : carreteradecarreraciclsta.keySet()) {
 			
-			if ((int)km <= (int) getEspacioRecorrido())
-			{
+			if ( km.intValue() <= (int) getEspacioRecorrido() ) {
 				pendiente = carreteradecarreraciclsta.get(km).getPendiente();
 			}
-			
-			
 		}
 		
-		System.out.println("angulo " +pendiente);
-		if (pendiente < 0) pendiente = 1 + Math.cos(pendiente);
+		double factorpendiente = 0d;
 		
-		else pendiente = Math.cos(pendiente);
+		if (pendiente < 0) {
+			factorpendiente = 1 + Math.cos(pendiente);
+		} else {
+			factorpendiente = Math.cos(pendiente);
+		}
 		
-		System.out.println("pendiente " +pendiente);
-		return pendiente;
+		return factorpendiente;
 	}
 	
 	/**
@@ -143,10 +140,10 @@ public class Bicicleta extends Veiculo implements ObjetosConSalidaDeDatos {
 	 * @param cadenciaciclista Frecuencia con la que el ciclista da pedaladas. 
 	 */
 	public void darPedalada(double cadenciaciclista) {
-		double velocidad = calcularVelocidadCadencia(cadenciaciclista)* pendienteTramoActual();
+		double velocidad = calcularVelocidadCadencia(cadenciaciclista) + pendienteTramoActual();
 		
 		setEspacioRecorrido(espacioDePedalada());
-		setVelocidad(velocidad);
+		setVelocidadIncremento(velocidad);
 	}
 	
 	/**
