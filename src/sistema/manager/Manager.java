@@ -84,12 +84,13 @@ public class Manager {
 		
 		reloj = new Reloj();
 		
+		ciclistas = new ArrayList<Ciclista>();
+		
+		// Bicicletas para los ciclistas.
 		bicicleta = new Bicicleta();
 		bicicleta1 = new Bicicleta();
 		bicicleta2 = new Bicicleta();
 		bicicleta3 = new Bicicleta();
-		
-		ciclistas = new ArrayList<Ciclista>();
 		
 		ciclistas.add(new Ciclista("Pamela", 1, 0.5, bicicleta, reloj));
 		ciclistas.add(new Ciclista("Pedro", 2, 1.5, bicicleta1, reloj));
@@ -99,8 +100,10 @@ public class Manager {
 		listaejecutables = new ArrayList<ObjetosQueSeEjecutan>();
 		salidadatos = new SalidaDatos();
 		
+		// Se registran los elementos ejecutables en una lista.
 		listaejecutables.add(reloj);
 		
+		// Se registran los elementos con salida de datos.
 		for (Ciclista ciclista : ciclistas) {
 			listaejecutables.add(ciclista);
 			salidadatos.registrarObjetoConSalidaDatos(ciclista);
@@ -115,7 +118,7 @@ public class Manager {
 		dispatcher = new Dispatcher();
 		parser = new ParseadorComandos(dispatcher, listaejecutables);
 		
-		lector = new Lector("prueba", false);
+		lector = new Lector(DEFAULT_COMANDOS_PATH, false);
 	}
 	
 	/**
@@ -123,7 +126,7 @@ public class Manager {
 	 */
 	public void ejecutar() {
 		
-		while ( reloj.getHoras() < 200000 ) {
+		while ( reloj.getHoras() < 2 ) {
 			
 			parser.parse(lector.leerTeclado());
 			parser.parse(lector.leerFichero());
@@ -134,7 +137,7 @@ public class Manager {
 				objetoejecutable.ejecutar();
 			}
 			
-			if(reloj.getImpulsos()== 0){
+			if(reloj.getImpulsos() == 0){
 				try {
 					Thread.sleep(2000);
 				}	
@@ -161,7 +164,7 @@ public class Manager {
 		Manager manager = new Manager();
 		
 		manager.cargarConfiguracion();
-//		manager.iniciar();
+		manager.iniciar();
 //		manager.ejecutar();
 //		manager.finalizar();
 	}

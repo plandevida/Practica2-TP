@@ -51,9 +51,11 @@ public class ParseadorCarrera implements Parseador {
 				Double kilometros = Double.valueOf(cadena[0]);
 				Integer pendiente = Integer.valueOf(cadena[1]);
 				MiViento viento = MiViento.existe(cadena[2]);
+				Double velocidadviento = Double.valueOf(cadena[3]);
+				
 				
 				// Mapa con la pendiente y la dirección del viento.
-				TramoCiclista tramo = new TramoCiclista(kilometros, pendiente, viento);
+				TramoCiclista tramo = new TramoCiclista(kilometros, pendiente, viento, velocidadviento);
 				
 				mapa.put(i+1, tramo);
 				
