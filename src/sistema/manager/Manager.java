@@ -42,7 +42,8 @@ public class Manager {
 	private Bicicleta bicicleta2;
 	private Bicicleta bicicleta3;
 	//
-	private FactoresExternos factores;
+	private List<FactoresExternos> factores;
+
 	//
 	private Reloj reloj;
 	
@@ -86,15 +87,19 @@ public class Manager {
 		reloj = new Reloj();
 		
 		ciclistas = new ArrayList<Ciclista>();
+		factores = new ArrayList<FactoresExternos>();
 		
 		// Bicicletas para los ciclistas.
 		bicicleta = new Bicicleta();
 		bicicleta1 = new Bicicleta();
 		bicicleta2 = new Bicicleta();
 		bicicleta3 = new Bicicleta();
-		//
-		factores = new FactoresExternos(bicicleta1, carreteradecarreraciclsta);
-		//
+		
+		factores.add(new FactoresExternos(bicicleta, carreteradecarreraciclsta));
+		factores.add(new FactoresExternos(bicicleta1, carreteradecarreraciclsta));
+		factores.add(new FactoresExternos(bicicleta2, carreteradecarreraciclsta));
+		factores.add(new FactoresExternos(bicicleta3, carreteradecarreraciclsta));
+		
 		ciclistas.add(new Ciclista("Pamela", 1, 0.5, bicicleta, reloj));
 		ciclistas.add(new Ciclista("Pedro", 2, 1.5, bicicleta1, reloj));
 		ciclistas.add(new Ciclista("Ana", 3, 1.0, bicicleta2, reloj));
@@ -111,8 +116,11 @@ public class Manager {
 			listaejecutables.add(ciclista);
 			salidadatos.registrarObjetoConSalidaDatos(ciclista);
 		}
-		//
-		listaejecutables.add(factores);
+		//Se registran los factores externos
+		for (FactoresExternos factor : factores){
+			listaejecutables.add(factor);
+		}
+	
 		//
 		salidadatos.registrarObjetoConSalidaDatos(reloj);
 		salidadatos.registrarObjetoConSalidaDatos(bicicleta);
@@ -147,10 +155,6 @@ public class Manager {
 			System.out.println("velo " + bicicleta1.getVelocidad());
 			System.out.println();
 
-//			salidadatos.mostrarDatos();
-//			System.out.println("espacio " + bicicleta1.getEspacioRecorrido());
-//			System.out.println("velo " + bicicleta1.getVelocidad());
-//			System.out.println();
 
 			
 		}
