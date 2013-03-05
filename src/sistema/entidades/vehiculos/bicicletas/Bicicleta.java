@@ -140,7 +140,7 @@ public class Bicicleta extends Vehiculo implements ObjetosConSalidaDeDatos {
 	 * @param cadenciaciclista Frecuencia con la que el ciclista da pedaladas. 
 	 */
 	public void darPedalada(double cadenciaciclista) {
-		double velocidad = calcularVelocidadCadencia(cadenciaciclista) + pendienteTramoActual();
+		double velocidad = calcularVelocidadCadencia(cadenciaciclista) * pendienteTramoActual();
 		
 		setEspacioRecorrido(espacioDePedalada());
 		setVelocidadIncremento(velocidad);
