@@ -4,6 +4,7 @@ import java.util.Map;
 
 import sistema.entidades.carretera.tramocarreraciclista.TramoCiclista;
 import sistema.entidades.vehiculos.bicicletas.Bicicleta;
+import sistema.factoresexternos.viento.MiViento;
 import sistema.interfaces.ObjetosQueSeEjecutan;
 
 /**
@@ -69,11 +70,33 @@ public class FactoresExternos implements ObjetosQueSeEjecutan {
 	}
 	
 	/**
+	 * Mira el viento que hay en el tramo actual y devuelve un factor
+	 * 
+	 */
+	private double vientoTramoActual(){
+		
+		TramoCiclista tramo = tramoActual();
+		
+		
+		int direccionviento = tramo.getViento().getFactor();
+		
+		double velocidadviento = tramo.getVelocidadViento();
+		
+		return (double)(direccionviento * velocidadviento)/10;
+		
+	}
+
+	/**
 	 * Modifica la velocidad de la bicicleta dependiendo de los factores externos de la carretera
 	 */
+
+
 	private void setVelocidadModificada() {
-		
+
 		double velocidad = bici.getVelocidad() * pendienteTramoActual();
+		
+		velocidad = velocidad + velocidad * vientoTramoActual();
+		
 		bici.setVelocidadIncremento(velocidad);
 	}
 
@@ -86,3 +109,4 @@ public class FactoresExternos implements ObjetosQueSeEjecutan {
 		return true;
 	}
 }
+
