@@ -57,7 +57,7 @@ public class ParseadorCarrera implements Parseador {
 				// Mapa con la pendiente y la dirección del viento.
 				TramoCiclista tramo = new TramoCiclista(kilometros, pendiente, viento, velocidadviento);
 				
-				mapa.put(kilometros, tramo);
+				mapa.put(i+1, tramo);
 				
 			} catch (NumberFormatException ne) {
 				

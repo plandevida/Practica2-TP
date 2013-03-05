@@ -56,7 +56,21 @@ public class Bicicleta extends Vehiculo implements ObjetosConSalidaDeDatos {
 		return relaciondetrasminsion;
 	}
 	
-	
+	/**
+	 *  Busca el tramo en el que se encuentra la bici 
+	 * @return devuelve el tramo
+	 */
+	private TramoCiclista tramoActual(){
+		TramoCiclista tramo = new TramoCiclista(0, 0, null, 0);
+		
+		for(Integer reco : carreteradecarreraciclsta.keySet()) {
+
+			if ( carreteradecarreraciclsta.get(reco).getKilometros() <= (int) getEspacioRecorrido() ) {
+				tramo = carreteradecarreraciclsta.get(reco);
+			}
+		}
+		return tramo;
+	}
 	
 	/** Metodo que busca el tramo en el que esta y devuelver 
 	 * 
@@ -64,22 +78,23 @@ public class Bicicleta extends Vehiculo implements ObjetosConSalidaDeDatos {
 	 */
 	private double pendienteTramoActual() {
 		
-		int pendiente = 0;
-		
-		for(Integer km : carreteradecarreraciclsta.keySet()) {
-			
-			if ( km.intValue() <= (int) getEspacioRecorrido() ) {
-				pendiente = carreteradecarreraciclsta.get(km).getPendiente();
-			}
-		}
-		
+		int angulograd = 0;
+		double angulorad = 0d;
 		double factorpendiente = 0d;
 		
-		if (pendiente < 0) {
-			factorpendiente = 1 + Math.cos(pendiente);
-		} else {
-			factorpendiente = Math.cos(pendiente);
+		TramoCiclista tramo = tramoActual();
+		
+		angulograd = tramo.getPendiente();
+		angulorad = (angulograd * Math.PI)/180;
+		
+
+		factorpendiente = Math.cos(angulorad);
+		
+		if (angulograd < 0) {
+			factorpendiente = factorpendiente + 1d;
+
 		}
+
 		
 		return factorpendiente;
 	}
@@ -140,7 +155,7 @@ public class Bicicleta extends Vehiculo implements ObjetosConSalidaDeDatos {
 	 * @param cadenciaciclista Frecuencia con la que el ciclista da pedaladas. 
 	 */
 	public void darPedalada(double cadenciaciclista) {
-		double velocidad = calcularVelocidadCadencia(cadenciaciclista) + pendienteTramoActual();
+		double velocidad = calcularVelocidadCadencia(cadenciaciclista) * pendienteTramoActual();
 		
 		setEspacioRecorrido(espacioDePedalada());
 		setVelocidadIncremento(velocidad);
