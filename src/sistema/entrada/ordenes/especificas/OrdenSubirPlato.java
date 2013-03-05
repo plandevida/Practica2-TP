@@ -11,5 +11,11 @@ public class OrdenSubirPlato extends OrdenParaCiclista {
 	@Override
 	public void ejecutarOrden() {
 		getCiclista().aumentarPlato();
+		mostrarMensaje();
+	}
+	
+	@Override
+	public void mostrarMensaje() {
+		System.out.println(this.getClass().getName() + ": Subiendo de plato");
 	}
 }

@@ -13,5 +13,19 @@ public class OrdenAumentarCadencia extends OrdenParaCiclista {
 	@Override
 	public void ejecutarOrden() {
 		getCiclista().setCadencia(aumentocadencia);
+		mostrarMensaje();
+	}
+	
+	/**
+	 * Aumenta la cadencia del ciclista.
+	 * @param aumentodecadencia El aumento de la cadencia.
+	 */
+	public void setAumentoCadencia(int aumentodecadencia) {
+		aumentocadencia = aumentodecadencia;
+	}
+	
+	@Override
+	public void mostrarMensaje() {
+		System.out.println(this.getClass().getName() + ": Aumentando la cadencia en :" + aumentocadencia);
 	}
 }

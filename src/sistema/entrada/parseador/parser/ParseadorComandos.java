@@ -6,6 +6,7 @@ import sistema.entidades.personas.ciclistas.Ciclista;
 import sistema.entrada.ordenes.Dispatcher;
 import sistema.entrada.ordenes.Orden;
 import sistema.entrada.ordenes.OrdenParaCiclista;
+import sistema.entrada.ordenes.especificas.OrdenAumentarCadencia;
 import sistema.entrada.parseador.Parseador;
 import sistema.entrada.parseador.lexer.Comandos;
 import sistema.interfaces.ObjetosQueSeEjecutan;
@@ -113,6 +114,9 @@ public class ParseadorComandos implements Parseador {
 			determinaCiclista(ordenciclista, argumentos);
 		}
 		
+		// Asignamos los parámetros extra a las ordens que lo necesiten.
+		atributosOrdenes(orden, argumentos);
+		
 		return orden;
 	}
 	
@@ -136,6 +140,23 @@ public class ParseadorComandos implements Parseador {
 					orden.setCiclista(ciclista);
 				}
 			}
+		}
+	}
+	
+	/**
+	 * Configura los atributos de las ordenes que lo necesiten
+	 * @param orden Orden a la que configurar los atributos.
+	 */
+	public void atributosOrdenes(Orden orden, String[]... argumentos) {
+		
+		if ( orden instanceof OrdenAumentarCadencia ) {
+			OrdenAumentarCadencia ordenAumentar = (OrdenAumentarCadencia) orden;
+			
+			String[] arraydeargumentos = argumentos[0];
+			
+			int aumentocadencia = Integer.valueOf(arraydeargumentos[2]);
+			
+			ordenAumentar.setAumentoCadencia(aumentocadencia);
 		}
 	}
 }

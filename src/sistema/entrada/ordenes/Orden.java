@@ -12,6 +12,11 @@ package sistema.entrada.ordenes;
 public abstract class Orden implements Comparable<Orden> {
 	
 	/**
+	 * Método para mostrar mensajes de las ordenes.
+	 */
+	public abstract void mostrarMensaje();
+	
+	/**
 	 * Ejecuta la orden, mandando el mensaje del
 	 * comando al objeto que lo debe ejecutar.
 	 */

@@ -14,7 +14,7 @@ public class OrdenParaCiclista extends Orden {
 	
 	@Override
 	public void ejecutarOrden() {
-		
+		mostrarMensaje();
 	}
 	
 	/**
@@ -34,5 +34,11 @@ public class OrdenParaCiclista extends Orden {
 	 */
 	public Ciclista getCiclista() {
 		return ciclista;
+	}
+	
+	/**
+	 * Método para mostrar mensajes de las ordenes.
+	 */
+	public void mostrarMensaje() {
 	}
 }

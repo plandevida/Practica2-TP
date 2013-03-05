@@ -11,5 +11,11 @@ public class OrdenFrenar extends OrdenParaCiclista {
 	@Override
 	public void ejecutarOrden() {
 		getCiclista().frenar();
+		mostrarMensaje();
+	}
+	
+	@Override
+	public void mostrarMensaje() {
+		System.out.println(this.getClass().getName() + ": Frenando");
 	}
 }

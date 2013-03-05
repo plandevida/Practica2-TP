@@ -8,6 +8,11 @@ public class OrdenDesconocida extends Orden {
 
 	@Override
 	public void ejecutarOrden() {
+//		mostrarMensaje();
+	}
+	
+	@Override
+	public void mostrarMensaje() {
 		System.err.println("NO SE RECONOCE LA ORDEN");
 		System.out.println("Ordenes del sistema: ");
 		
