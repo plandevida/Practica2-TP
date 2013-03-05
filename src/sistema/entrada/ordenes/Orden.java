@@ -1,5 +1,7 @@
 package sistema.entrada.ordenes;
 
+import java.util.PriorityQueue;
+
 /**
  * Clase que representa una orden a realizar por un elemento
  * único del sistema.

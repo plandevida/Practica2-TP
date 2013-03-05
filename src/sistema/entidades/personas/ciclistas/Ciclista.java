@@ -38,7 +38,7 @@ public class Ciclista extends Persona implements ObjetosConSalidaDeDatos {
 	 * Crea un ciclista.
 	 * 
 	 * @param nombre
-	 * @param numeromallot
+	 * @param nummallot
 	 * @param cadenciaCiclista
 	 * @param bicicletaamontar
 	 * @param relojCiclista

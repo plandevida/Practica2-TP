@@ -42,8 +42,6 @@ public class ParseadorComandos implements Parseador {
 	 * dispatcher @see {@link Dispatcher#registrarOrdenes(Orden)}
 	 * 
 	 * @param comando Comando recibido.
-	 * @return La orden generada, si el comando no se reconoce
-	 * la orden contendrá un comando DESCONOCIDO @see {@link Comandos#DESCONOCIDO}
 	 */
 	@Override
 	public void parse(String comando) {

@@ -51,10 +51,10 @@ public class Vehiculo {
 	/**
 	 * Cambia el valor del espacio recorrido por la bicicleta.
 	 * 
-	 * @param espacioañadido Espacio recorrido por la pedalada.
+	 * @param espacioanhadido Espacio recorrido por la pedalada.
 	 */
-	public void setEspacioRecorrido(double espacioañadido){
+	public void setEspacioRecorrido(double espacioanhadido){
 		
-		espaciorecorrido += espacioañadido;
+		espaciorecorrido += espacioanhadido;
 	}
 }

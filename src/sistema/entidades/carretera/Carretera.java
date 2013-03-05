@@ -26,7 +26,7 @@ public class Carretera {
 	/**
 	 * Configura los kilómetros de la carretera
 	 * 
-	 * @param kilometros
+	 * @param kilometrosdecarretera
 	 */
 	public void setKilometros(double kilometrosdecarretera) {
 		kilometros = kilometrosdecarretera;
