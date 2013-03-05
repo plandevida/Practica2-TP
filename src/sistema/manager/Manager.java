@@ -125,16 +125,15 @@ public class Manager {
 		
 		while ( reloj.getHoras() < 2 ) {
 			
-//			parser.parse(lector.leerTeclado());
-//			parser.parse(lector.leerFichero());
-//			parser.dispatch();
+			parser.parse(lector.leerTeclado());
+			parser.parse(lector.leerFichero());
+			parser.dispatch();
 			
-//			salidadatos.mostrarDatos();
 			for (ObjetosQueSeEjecutan objetoejecutable : listaejecutables) {
 				objetoejecutable.ejecutar();
 			}
 			
-			//salidadatos.mostrarDatos();
+			salidadatos.mostrarDatos();
 			System.out.println("espacio " + bicicleta1.getEspacioRecorrido());
 			System.out.println("velo " + bicicleta1.getVelocidad());
 			System.out.println();
