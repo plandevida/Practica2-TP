@@ -46,7 +46,7 @@ public class TestBicicleta {
 		
 		utilidadesBicicleta = new TestUtilidadesBicicleta();
 		
-		bicicleta = new Bicicleta(mapa);
+		bicicleta = new Bicicleta();
 		
 		
 	}

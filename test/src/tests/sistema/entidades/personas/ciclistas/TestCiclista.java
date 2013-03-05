@@ -52,7 +52,7 @@ public class TestCiclista {
 		
 		relojciclista = new Reloj();
 		
-		bicicletaciclista = new Bicicleta(mapa);
+		bicicletaciclista = new Bicicleta();
 		
 		ciclista = new Ciclista(nombreciclista, numeromallot, cadenciaciclista, bicicletaciclista, relojciclista);
 	}
