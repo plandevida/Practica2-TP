@@ -44,6 +44,7 @@ public class FactoresExternos implements ObjetosQueSeEjecutan {
 	
 	/**
 	 * Calcular el factor de la pendiente, gracias al angulo de la pendiente 
+	 * 
 	 * @return devuelve el factorpendiente
 	 */
 	private double pendienteTramoActual() {
@@ -72,6 +73,7 @@ public class FactoresExternos implements ObjetosQueSeEjecutan {
 	/**
 	 * Mira el viento que hay en el tramo actual y devuelve un factor
 	 * 
+	 * @return devuelve un porcentaje calculado a traves del viento y su direccion
 	 */
 	private double vientoTramoActual(){
 		
@@ -88,9 +90,8 @@ public class FactoresExternos implements ObjetosQueSeEjecutan {
 
 	/**
 	 * Modifica la velocidad de la bicicleta dependiendo de los factores externos de la carretera
+	 * 
 	 */
-
-
 	private void setVelocidadModificada() {
 
 		double velocidad = bici.getVelocidad() * pendienteTramoActual();
