@@ -3,12 +3,19 @@ package src.tests.sistema.entidades.veiculos;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import sistema.entidades.carretera.tramocarreraciclista.TramoCiclista;
 import sistema.entidades.vehiculos.bicicletas.Bicicleta;
+import sistema.entrada.lectura.Lector;
+import sistema.entrada.parseador.parser.ParseadorCarrera;
+import sistema.manager.Manager;
 import src.tests.utils.TestUtilidadesBicicleta;
 import src.tests.utils.TestUtilidadesCiclista;
 
@@ -20,15 +27,26 @@ public class TestBicicleta {
 	private TestUtilidadesBicicleta utilidadesBicicleta;
 	private TestUtilidadesCiclista utilidadesCiclista;
 	
+	private Map<Integer, TramoCiclista> mapa;
+	
 	@Before
 	public void run() {
 		
+		Lector lectorConfiguracion = new Lector(Manager.DEFAULT_CONFIG_PATH, true);
+		
+		String configuracioncarreraciclista = lectorConfiguracion.cargarFicheroCompelto();
+		
+		mapa = new HashMap<Integer, TramoCiclista>();
+		
+		ParseadorCarrera parseadorcarrera = new ParseadorCarrera(mapa);
+		
+		parseadorcarrera.parse(configuracioncarreraciclista);
 		
 		utilidadesCiclista = new TestUtilidadesCiclista(1.0d);
 		
 		utilidadesBicicleta = new TestUtilidadesBicicleta();
 		
-		bicicleta = new Bicicleta();
+		bicicleta = new Bicicleta(mapa);
 		
 		
 	}
@@ -62,7 +80,8 @@ public class TestBicicleta {
 		double velocidadesperada = utilidadesBicicleta.velocidadDeBici(utilidadesCiclista.getCadencia(), 
 																	bicicleta.getRadiorueda(), 
 																	bicicleta.getPlatoactual(), 
-																	bicicleta.getPinhonactual());
+																	bicicleta.getPinhonactual(),
+																	mapa, bicicleta.getEspacioRecorrido());
 		
 		
 		assertEquals("Error: La velocidad de la bicicleta no es la correcta", velocidadesperada, bicicleta.getVelocidad(), 0);
@@ -101,7 +120,8 @@ public class TestBicicleta {
 		
 		double velocidadfrenado = utilidadesBicicleta.velocidadDeBici(1,bicicleta.getRadiorueda(), 
 																				bicicleta.getPlatoactual(), 
-																				bicicleta.getPinhonactual());
+																				bicicleta.getPinhonactual(),
+																				mapa, bicicleta.getEspacioRecorrido());
 		
 		velocidadfrenado = -(velocidadfrenado *0.1);
 		
