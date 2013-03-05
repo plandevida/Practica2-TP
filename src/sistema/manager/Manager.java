@@ -13,6 +13,7 @@ import sistema.entrada.lectura.Lector;
 import sistema.entrada.ordenes.Dispatcher;
 import sistema.entrada.parseador.parser.ParseadorCarrera;
 import sistema.entrada.parseador.parser.ParseadorComandos;
+import sistema.factoresexternos.FactoresExternos;
 import sistema.interfaces.ObjetosQueSeEjecutan;
 import sistema.salidadatos.SalidaDatos;
 
@@ -40,6 +41,9 @@ public class Manager {
 	private Bicicleta bicicleta1;
 	private Bicicleta bicicleta2;
 	private Bicicleta bicicleta3;
+	//
+	private FactoresExternos factores;
+	//
 	private Reloj reloj;
 	
 	// Elemetos del sistema
@@ -84,11 +88,13 @@ public class Manager {
 		ciclistas = new ArrayList<Ciclista>();
 		
 		// Bicicletas para los ciclistas.
-		bicicleta = new Bicicleta(carreteradecarreraciclsta);
-		bicicleta1 = new Bicicleta(carreteradecarreraciclsta);
-		bicicleta2 = new Bicicleta(carreteradecarreraciclsta);
-		bicicleta3 = new Bicicleta(carreteradecarreraciclsta);
-		
+		bicicleta = new Bicicleta();
+		bicicleta1 = new Bicicleta();
+		bicicleta2 = new Bicicleta();
+		bicicleta3 = new Bicicleta();
+		//
+		factores = new FactoresExternos(bicicleta1, carreteradecarreraciclsta);
+		//
 		ciclistas.add(new Ciclista("Pamela", 1, 0.5, bicicleta, reloj));
 		ciclistas.add(new Ciclista("Pedro", 2, 1.5, bicicleta1, reloj));
 		ciclistas.add(new Ciclista("Ana", 3, 1.0, bicicleta2, reloj));
@@ -105,7 +111,9 @@ public class Manager {
 			listaejecutables.add(ciclista);
 			salidadatos.registrarObjetoConSalidaDatos(ciclista);
 		}
-		
+		//
+		listaejecutables.add(factores);
+		//
 		salidadatos.registrarObjetoConSalidaDatos(reloj);
 		salidadatos.registrarObjetoConSalidaDatos(bicicleta);
 		salidadatos.registrarObjetoConSalidaDatos(bicicleta1);
@@ -125,18 +133,25 @@ public class Manager {
 		
 		while ( reloj.getHoras() < 2 ) {
 			
-			parser.parse(lector.leerTeclado());
-			parser.parse(lector.leerFichero());
-			parser.dispatch();
+			//parser.parse(lector.leerTeclado());
+			//parser.parse(lector.leerFichero());
+			//parser.dispatch();
 			
 			for (ObjetosQueSeEjecutan objetoejecutable : listaejecutables) {
 				objetoejecutable.ejecutar();
 			}
 			
+
+			//salidadatos.mostrarDatos();
+			System.out.println("espacio " + bicicleta1.getEspacioRecorrido());
+			System.out.println("velo " + bicicleta1.getVelocidad());
+			System.out.println();
+
 //			salidadatos.mostrarDatos();
 //			System.out.println("espacio " + bicicleta1.getEspacioRecorrido());
 //			System.out.println("velo " + bicicleta1.getVelocidad());
 //			System.out.println();
+
 			
 		}
 	}

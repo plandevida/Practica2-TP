@@ -32,11 +32,10 @@ public class Bicicleta extends Vehiculo implements ObjetosConSalidaDeDatos {
 	
 	protected double radiorueda;
 	
+
 	
-	protected Map<Integer, TramoCiclista> carreteradecarreraciclsta;
+	public Bicicleta() {
 	
-	public Bicicleta(Map<Integer, TramoCiclista> carreteradecarreraciclsta) {
-		this.carreteradecarreraciclsta = carreteradecarreraciclsta;
 		setVelocidad(0);
 		setEspacioRecorrido(0);
 		setPinhonactual(0);
@@ -56,48 +55,7 @@ public class Bicicleta extends Vehiculo implements ObjetosConSalidaDeDatos {
 		return relaciondetrasminsion;
 	}
 	
-	/**
-	 *  Busca el tramo en el que se encuentra la bici 
-	 * @return devuelve el tramo
-	 */
-	private TramoCiclista tramoActual(){
-		TramoCiclista tramo = new TramoCiclista(0, 0, null, 0);
-		
-		for(Integer reco : carreteradecarreraciclsta.keySet()) {
-
-			if ( carreteradecarreraciclsta.get(reco).getKilometros() <= (int) getEspacioRecorrido() ) {
-				tramo = carreteradecarreraciclsta.get(reco);
-			}
-		}
-		return tramo;
-	}
 	
-	/** Metodo que busca el tramo en el que esta y devuelver 
-	 * 
-	 * @return devuelve la pendiente
-	 */
-	private double pendienteTramoActual() {
-		
-		int angulograd = 0;
-		double angulorad = 0d;
-		double factorpendiente = 0d;
-		
-		TramoCiclista tramo = tramoActual();
-		
-		angulograd = tramo.getPendiente();
-		angulorad = (angulograd * Math.PI)/180;
-		
-
-		factorpendiente = Math.cos(angulorad);
-		
-		if (angulograd < 0) {
-			factorpendiente = factorpendiente + 1d;
-
-		}
-
-		
-		return factorpendiente;
-	}
 	
 	/**
 	 * Devuelve el la longitud de la rueda.
@@ -155,7 +113,7 @@ public class Bicicleta extends Vehiculo implements ObjetosConSalidaDeDatos {
 	 * @param cadenciaciclista Frecuencia con la que el ciclista da pedaladas. 
 	 */
 	public void darPedalada(double cadenciaciclista) {
-		double velocidad = calcularVelocidadCadencia(cadenciaciclista) * pendienteTramoActual();
+		double velocidad = calcularVelocidadCadencia(cadenciaciclista);
 		
 		setEspacioRecorrido(espacioDePedalada());
 		setVelocidadIncremento(velocidad);
