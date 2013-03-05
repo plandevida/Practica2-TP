@@ -1,5 +1,9 @@
 package src.tests.utils;
 
+import java.util.Map;
+
+import sistema.entidades.carretera.tramocarreraciclista.TramoCiclista;
+
 
 public class TestUtilidadesBicicleta {
 
@@ -9,9 +13,9 @@ public class TestUtilidadesBicicleta {
 	 * @param cadenciaciclista Frecuencia con la que el ciclista da pedaladas.
 	 * @return La velocidad de la bicicleta.
 	 */
-	public double velocidadDeBici(double cadenciaciclista, double radiorueda, int dientesPlato, int dientesPinhon) {
+	public double velocidadDeBici(double cadenciaciclista, double radiorueda, int dientesPlato, int dientesPinhon, Map<Integer, TramoCiclista> carreteradecarreraciclista, double espaciorecorrido) {
 
-		double velocidadbici = espacioDePedalada(radiorueda, dientesPlato, dientesPinhon) / cadenciaciclista;
+		double velocidadbici = espacioDePedalada(radiorueda, dientesPlato, dientesPinhon) / cadenciaciclista * pendienteTramoActual(carreteradecarreraciclista, espaciorecorrido);
 
 		return velocidadbici;
 	}
@@ -51,6 +55,32 @@ public class TestUtilidadesBicicleta {
 
 		return recorridolinealdelarueda;
 
+	}
+	
+	/** Metodo que busca el tramo en el que esta y devuelver 
+	 * 
+	 * @return devuelve la pendiente
+	 */
+	public double pendienteTramoActual(Map<Integer, TramoCiclista> carreteradecarreraciclista, double espaciorecorrido) {
+		
+		int pendiente = 0;
+		
+		for(Integer km : carreteradecarreraciclista.keySet()) {
+			
+			if ( km.intValue() <= (int) espaciorecorrido ) {
+				pendiente = carreteradecarreraciclista.get(km).getPendiente();
+			}
+		}
+		
+		double factorpendiente = 0d;
+		
+		if (pendiente < 0) {
+			factorpendiente = 1 + Math.cos(pendiente);
+		} else {
+			factorpendiente = Math.cos(pendiente);
+		}
+		
+		return factorpendiente;
 	}
 	
 
