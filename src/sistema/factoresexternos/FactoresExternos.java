@@ -11,13 +11,14 @@ import sistema.interfaces.ObjetosQueSeEjecutan;
  * @author Daniel Serrano Torres
  * @author Alvaro Quesada Pimentel
  */
-public class FactoresExternos implements ObjetosQueSeEjecutan{
+public class FactoresExternos implements ObjetosQueSeEjecutan {
 	
 	private Bicicleta bici;
+	
 	//Mapa de la carretera
 	private Map<Integer, TramoCiclista> carreteradecarreraciclista;
 	
-	public FactoresExternos(Bicicleta bici, Map<Integer, TramoCiclista> carreteradecarreraciclista){
+	public FactoresExternos(Bicicleta bici, Map<Integer, TramoCiclista> carreteradecarreraciclista) {
 		
 		this.bici = bici;
 		this.carreteradecarreraciclista = carreteradecarreraciclista;
@@ -27,7 +28,8 @@ public class FactoresExternos implements ObjetosQueSeEjecutan{
 	 *  Busca el tramo en el que se encuentra la bici 
 	 * @return devuelve el tramo
 	 */
-	private TramoCiclista tramoActual(){
+	private TramoCiclista tramoActual() {
+		
 		TramoCiclista tramo = new TramoCiclista(0, 0, null, 0);
 		
 		for(Integer reco : carreteradecarreraciclista.keySet()) {
@@ -38,6 +40,7 @@ public class FactoresExternos implements ObjetosQueSeEjecutan{
 		}
 		return tramo;
 	}
+	
 	/**
 	 * Calcular el factor de la pendiente, gracias al angulo de la pendiente 
 	 * @return devuelve el factorpendiente
@@ -64,13 +67,14 @@ public class FactoresExternos implements ObjetosQueSeEjecutan{
 		
 		return factorpendiente;
 	}
+	
 	/**
 	 * Modifica la velocidad de la bicicleta dependiendo de los factores externos de la carretera
 	 */
-	private void setVelocidadModificada(){
+	private void setVelocidadModificada() {
+		
 		double velocidad = bici.getVelocidad() * pendienteTramoActual();
 		bici.setVelocidadIncremento(velocidad);
-		
 	}
 
 

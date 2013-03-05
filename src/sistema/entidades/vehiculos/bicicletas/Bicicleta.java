@@ -1,9 +1,7 @@
 package sistema.entidades.vehiculos.bicicletas;
 
-import java.util.Map;
 import java.util.StringTokenizer;
 
-import sistema.entidades.carretera.tramocarreraciclista.TramoCiclista;
 import sistema.entidades.vehiculos.Vehiculo;
 import sistema.interfaces.ObjetosConSalidaDeDatos;
 
@@ -32,8 +30,6 @@ public class Bicicleta extends Vehiculo implements ObjetosConSalidaDeDatos {
 	
 	protected double radiorueda;
 	
-
-	
 	public Bicicleta() {
 	
 		setVelocidad(0);
@@ -54,8 +50,6 @@ public class Bicicleta extends Vehiculo implements ObjetosConSalidaDeDatos {
 
 		return relaciondetrasminsion;
 	}
-	
-	
 	
 	/**
 	 * Devuelve el la longitud de la rueda.
