@@ -13,9 +13,9 @@ public class TestUtilidadesBicicleta {
 	 * @param cadenciaciclista Frecuencia con la que el ciclista da pedaladas.
 	 * @return La velocidad de la bicicleta.
 	 */
-	public double velocidadDeBici(double cadenciaciclista, double radiorueda, int dientesPlato, int dientesPinhon, Map<Integer, TramoCiclista> carreteradecarreraciclista, double espaciorecorrido) {
+	public double velocidadDeBici(double cadenciaciclista, double radiorueda, int dientesPlato, int dientesPinhon, double espaciorecorrido) {
 
-		double velocidadbici = espacioDePedalada(radiorueda, dientesPlato, dientesPinhon) / cadenciaciclista * pendienteTramoActual(carreteradecarreraciclista, espaciorecorrido);
+		double velocidadbici = espacioDePedalada(radiorueda, dientesPlato, dientesPinhon) / cadenciaciclista;
 
 		return velocidadbici;
 	}

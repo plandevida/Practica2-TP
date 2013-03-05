@@ -83,7 +83,7 @@ public class TestCiclista {
 																	bicicleta.getRadiorueda(), 
 																	bicicleta.getPlatos()[bicicleta.getPlatoactual()], 
 																	bicicleta.getPinhones()[bicicleta.getPinhonactual()],
-																	mapa, bicicleta.getEspacioRecorrido());
+																	bicicleta.getEspacioRecorrido());
 		
 		assertEquals("Error: La velocidad de la bicicleta no es la correcta", velocidadesperada, bicicleta.getVelocidad(), 0);
 	}

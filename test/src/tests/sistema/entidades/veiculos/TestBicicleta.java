@@ -81,7 +81,7 @@ public class TestBicicleta {
 																	bicicleta.getRadiorueda(), 
 																	bicicleta.getPlatoactual(), 
 																	bicicleta.getPinhonactual(),
-																	mapa, bicicleta.getEspacioRecorrido());
+																	bicicleta.getEspacioRecorrido());
 		
 		
 		assertEquals("Error: La velocidad de la bicicleta no es la correcta", velocidadesperada, bicicleta.getVelocidad(), 0);
@@ -121,7 +121,7 @@ public class TestBicicleta {
 		double velocidadfrenado = utilidadesBicicleta.velocidadDeBici(1,bicicleta.getRadiorueda(), 
 																				bicicleta.getPlatoactual(), 
 																				bicicleta.getPinhonactual(),
-																				mapa, bicicleta.getEspacioRecorrido());
+																			    bicicleta.getEspacioRecorrido());
 		
 		velocidadfrenado = -(velocidadfrenado *0.1);
 		
