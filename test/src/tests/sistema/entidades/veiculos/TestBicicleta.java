@@ -3,11 +3,14 @@ package src.tests.sistema.entidades.veiculos;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Map;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import sistema.entidades.carretera.tramocarreraciclista.TramoCiclista;
 import sistema.entidades.vehiculos.bicicletas.Bicicleta;
 import src.tests.utils.TestUtilidadesBicicleta;
 import src.tests.utils.TestUtilidadesCiclista;
@@ -20,6 +23,8 @@ public class TestBicicleta {
 	private TestUtilidadesBicicleta utilidadesBicicleta;
 	private TestUtilidadesCiclista utilidadesCiclista;
 	
+	private Map<Integer, TramoCiclista> mapa;
+	
 	@Before
 	public void run() {
 		
@@ -28,7 +33,7 @@ public class TestBicicleta {
 		
 		utilidadesBicicleta = new TestUtilidadesBicicleta();
 		
-		bicicleta = new Bicicleta();
+		bicicleta = new Bicicleta(mapa);
 		
 		
 	}

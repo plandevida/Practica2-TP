@@ -3,11 +3,14 @@ package src.tests.sistema.entidades.personas.ciclistas;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Map;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import sistema.entidades.carretera.tramocarreraciclista.TramoCiclista;
 import sistema.entidades.personas.ciclistas.Ciclista;
 import sistema.entidades.tiempo.Reloj;
 import sistema.entidades.vehiculos.bicicletas.Bicicleta;
@@ -24,6 +27,8 @@ public class TestCiclista {
 	private Bicicleta bicicletaciclista;
 	private Reloj relojciclista;
 	
+	private Map<Integer, TramoCiclista> mapa;
+	
 	private TestUtilidadesBicicleta utilidadesBicicleta;
 	
 	@Before
@@ -33,7 +38,7 @@ public class TestCiclista {
 		
 		relojciclista = new Reloj();
 		
-		bicicletaciclista = new Bicicleta();
+		bicicletaciclista = new Bicicleta(mapa);
 		
 		ciclista = new Ciclista(nombreciclista, numeromallot, cadenciaciclista, bicicletaciclista, relojciclista);
 	}
