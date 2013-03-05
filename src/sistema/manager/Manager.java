@@ -149,14 +149,10 @@ public class Manager {
 				objetoejecutable.ejecutar();
 			}
 			
-
 			//salidadatos.mostrarDatos();
 			System.out.println("espacio " + bicicleta1.getEspacioRecorrido());
 			System.out.println("velo " + bicicleta1.getVelocidad());
 			System.out.println();
-
-
-			
 		}
 	}
 	
