@@ -47,8 +47,6 @@ public class TestBicicleta {
 		utilidadesBicicleta = new TestUtilidadesBicicleta();
 		
 		bicicleta = new Bicicleta();
-		
-		
 	}
 	
 	@Test
@@ -79,8 +77,8 @@ public class TestBicicleta {
 		
 		double velocidadesperada = utilidadesBicicleta.velocidadDeBici(utilidadesCiclista.getCadencia(), 
 																	bicicleta.getRadiorueda(), 
-																	bicicleta.getPlatoactual(), 
-																	bicicleta.getPinhonactual(),
+																	bicicleta.getPlatos()[bicicleta.getPlatoactual()], 
+																	bicicleta.getPinhones()[bicicleta.getPinhonactual()],
 																	bicicleta.getEspacioRecorrido());
 		
 		
@@ -89,19 +87,24 @@ public class TestBicicleta {
 		
 		//se comprueba que el espacio de la pedalada sea el esperado
 		
-		double espaciodelapedaladaesperado = utilidadesBicicleta.espacioDePedalada(bicicleta.getRadiorueda(), 
-																	   bicicleta.getPlatoactual(), 
-																	   bicicleta.getPinhonactual());
+		double espaciodelapedaladaesperado = utilidadesBicicleta.espacioDePedalada(bicicleta.getRadiorueda(),
+																			bicicleta.getPlatos()[bicicleta.getPlatoactual()], 
+																			bicicleta.getPinhones()[bicicleta.getPinhonactual()]);
 		
-		assertEquals("Error: El espacio recorrido de la bicicleta no es el correcta", espaciodelapedaladaesperado, utilidadesBicicleta.espacioDePedalada(bicicleta.getRadiorueda(), bicicleta.getPlatoactual(), bicicleta.getPinhonactual()), 0);
+		assertEquals("Error: El espacio recorrido de la bicicleta no es el correcta", espaciodelapedaladaesperado, utilidadesBicicleta.espacioDePedalada(bicicleta.getRadiorueda(),
+																																					bicicleta.getPlatos()[bicicleta.getPlatoactual()],
+																																					bicicleta.getPinhones()[bicicleta.getPinhonactual()]
+																																					), 0);
 		
 		
 		//se comprueba que la relacion de transmision sea la esperada
 		
-		double relaciondeetransmisionesperado = utilidadesBicicleta.relacionDeTransmision(bicicleta.getPlatoactual(),
-																					     bicicleta.getPinhonactual());
+		double relaciondeetransmisionesperado = utilidadesBicicleta.relacionDeTransmision(bicicleta.getPlatos()[bicicleta.getPlatoactual()], 
+																					bicicleta.getPinhones()[bicicleta.getPinhonactual()]);
 		
-		assertEquals("Error: El espacio recorrido de la bicicleta no es el correcta", relaciondeetransmisionesperado, utilidadesBicicleta.relacionDeTransmision(bicicleta.getPlatoactual(), bicicleta.getPinhonactual()), 0);
+		assertEquals("Error: El espacio recorrido de la bicicleta no es el correcta", relaciondeetransmisionesperado, utilidadesBicicleta.relacionDeTransmision(bicicleta.getPlatos()[bicicleta.getPlatoactual()],
+																																							bicicleta.getPinhones()[bicicleta.getPinhonactual()]
+																																							), 0);
 		
 		
 		//se comprueba que el recorrido lineal sea el esperado
@@ -118,32 +121,32 @@ public class TestBicicleta {
 		
 		//se comprueba que la velocidad halla decrementado como esperamos despues de frenar
 		
-		double velocidadfrenado = utilidadesBicicleta.velocidadDeBici(1,bicicleta.getRadiorueda(), 
-																				bicicleta.getPlatoactual(), 
-																				bicicleta.getPinhonactual(),
-																			    bicicleta.getEspacioRecorrido());
+		double velocidadfrenado = utilidadesBicicleta.velocidadDeBici(1,bicicleta.getRadiorueda(),
+																bicicleta.getPlatos()[bicicleta.getPlatoactual()], 
+																bicicleta.getPinhones()[bicicleta.getPinhonactual()],
+															    bicicleta.getEspacioRecorrido());
 		
 		velocidadfrenado = -(velocidadfrenado *0.1);
 		
 		double velocidadesperadafrenando = velocidadesperada + velocidadfrenado;
-
+		
 		assertEquals("Error: La velocidad de frenado de la bicicleta no es la correcta", velocidadesperadafrenando, bicicleta.getVelocidad(), 0);
 		
 		
 		
-		//Se comprueban que los pi�ones se incremente y decrementen correctamente
+		//Se comprueban que los piñones se incremente y decrementen correctamente
 		
 		int incrementarpinhonesperado = bicicleta.getPinhonactual() +1;
 		
 		bicicleta.incrementarPinhon();
 		
-		assertEquals("Error: El incremento de pi�on de la bicicleta no es la correcta", incrementarpinhonesperado, bicicleta.getPinhonactual(), 0);
+		assertEquals("Error: El incremento de piñon de la bicicleta no es la correcta", incrementarpinhonesperado, bicicleta.getPinhonactual(), 0);
 		
 		int decrementarpinhonesperado = bicicleta.getPinhonactual() -1;
 			
 		bicicleta.decrementarPinhon();
 		
-		assertEquals("Error: El decremento de pi�on de la bicicleta no es la correcta", decrementarpinhonesperado, bicicleta.getPinhonactual(), 0);
+		assertEquals("Error: El decremento de piñon de la bicicleta no es la correcta", decrementarpinhonesperado, bicicleta.getPinhonactual(), 0);
 		
 		
 		
@@ -159,7 +162,7 @@ public class TestBicicleta {
 		
 		bicicleta.decrementarPlato();
 		
-		assertEquals("Error: El decremento de pi�on de la bicicleta no es la correcta", decrementarplatoesperado, bicicleta.getPlatoactual(), 0);
+		assertEquals("Error: El decremento de piñon de la bicicleta no es la correcta", decrementarplatoesperado, bicicleta.getPlatoactual(), 0);
 	}
 	
 }
