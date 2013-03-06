@@ -15,14 +15,20 @@ import sistema.entidades.carretera.tramocarreraciclista.TramoCiclista;
 import sistema.entidades.vehiculos.bicicletas.Bicicleta;
 import sistema.entrada.lectura.Lector;
 import sistema.entrada.parseador.parser.ParseadorCarrera;
+import sistema.factoresexternos.FactoresExternos;
 import sistema.manager.Manager;
+import src.tests.utils.TestUtilidadesFactoresExternos;
 
 @RunWith(JUnit4.class)
 public class TestFactoresExternos {
 	
 	private Bicicleta bicicleta;
+	private Bicicleta bicicletatest;
+	private FactoresExternos factoresExternos;
 	private Map<Integer, TramoCiclista> mapa;
 	
+	
+	TestUtilidadesFactoresExternos testUtilidadesFactoresExternos;
 	@Before
 	public void run() {
 		
@@ -37,7 +43,11 @@ public class TestFactoresExternos {
 		parseadorcarrera.parse(configuracioncarreraciclista);
 		
 		bicicleta = new Bicicleta();
+		bicicletatest = new Bicicleta();
+		factoresExternos = new FactoresExternos(bicicleta, mapa);
+		testUtilidadesFactoresExternos = new TestUtilidadesFactoresExternos(mapa, bicicletatest);
 		
+	
 	}
 	
 	@Test
@@ -51,6 +61,15 @@ public class TestFactoresExternos {
 	
 	@Test
 	public void testResultadosEsperados() {
-
+		
+		//Se ejecutan los factores externos para modificar la velocidad
+		testUtilidadesFactoresExternos.ejecutar();
+		
+		//Se ejecuta el objeto de la clase factores externos
+		factoresExternos.ejecutar();
+		
+		//Comparamos que la velocidad, al modificarla con los valores externos es la correcta
+		assertEquals("Error: La velocidad de la bicicleta al modificarla con los factores externos no es la correcta", bicicletatest.getVelocidad(), 
+																													   bicicleta.getVelocidad(), 0);
 	}
 }
