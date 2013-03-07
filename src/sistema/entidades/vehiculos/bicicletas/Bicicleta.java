@@ -123,7 +123,7 @@ public class Bicicleta extends Vehiculo implements ObjetosConSalidaDeDatos {
 		
 		double decrementovelocidad = velocidad * 0.2;
 		
-		setVelocidadIncremento(-decrementovelocidad);
+		setVelocidadIncremento(getVelocidad()-decrementovelocidad);
 	}
 	
 	/**

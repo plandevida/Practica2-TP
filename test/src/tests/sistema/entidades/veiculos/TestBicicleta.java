@@ -126,7 +126,7 @@ public class TestBicicleta {
 																bicicleta.getPinhones()[bicicleta.getPinhonactual()],
 															    bicicleta.getEspacioRecorrido());
 		
-		velocidadfrenado = -(velocidadfrenado *0.1);
+		velocidadfrenado = -(velocidadfrenado *0.2);
 		
 		double velocidadesperadafrenando = velocidadesperada + velocidadfrenado;
 		
