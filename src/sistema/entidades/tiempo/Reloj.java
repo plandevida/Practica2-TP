@@ -40,7 +40,7 @@ public class Reloj extends Contador implements ObjetosConSalidaDeDatos{
 //		if (++impulsos >= 100) {
 //			impulsos = 0;
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(1000);
 			}	
 			catch (InterruptedException e) {
 				e.printStackTrace();
