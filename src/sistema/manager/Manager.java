@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.sun.java_cup.internal.runtime.virtual_parse_stack;
+
 import sistema.entidades.carretera.tramocarreraciclista.TramoCiclista;
 import sistema.entidades.personas.ciclistas.Ciclista;
 import sistema.entidades.tiempo.Reloj;
@@ -15,7 +17,8 @@ import sistema.entrada.parseador.parser.ParseadorCarrera;
 import sistema.entrada.parseador.parser.ParseadorComandos;
 import sistema.factoresexternos.FactoresExternos;
 import sistema.interfaces.ObjetosQueSeEjecutan;
-import sistema.salidadatos.SalidaDatos;
+import sistema.salidadatos.consola.SalidaDatos;
+import sistema.salidadatos.visual.Ventana;
 
 /**
  * Clase principal que inicia la aplicación.
@@ -43,7 +46,7 @@ public class Manager {
 	private Bicicleta bicicleta3;
 	//
 	private List<FactoresExternos> factores;
-
+	private Ventana ventana;
 	//
 	private Reloj reloj;
 	
@@ -85,7 +88,7 @@ public class Manager {
 	public void iniciar() {
 		
 		reloj = new Reloj();
-		
+		ventana = new Ventana();
 		ciclistas = new ArrayList<Ciclista>();
 		factores = new ArrayList<FactoresExternos>();
 		
@@ -132,6 +135,7 @@ public class Manager {
 		parser = new ParseadorComandos(dispatcher, listaejecutables);
 		
 		lector = new Lector(DEFAULT_COMANDOS_PATH, false);
+		
 	}
 	
 	/**
@@ -153,6 +157,9 @@ public class Manager {
 //			System.out.println("espacio " + bicicleta1.getEspacioRecorrido());
 //			System.out.println("velo " + bicicleta1.getVelocidad());
 //			System.out.println();
+			
+			;
+			
 		}
 	}
 	

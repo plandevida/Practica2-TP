@@ -1,60 +1,100 @@
-package sistema.salidadatos;
+package sistema.salidadatos.visual;
 
+import java.awt.GridLayout;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import sistema.interfaces.ObjetosConSalidaDeDatos;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayer;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
-/**
- * Clase que muestra la información formateada de cada
- * elemento registrado en esta.
- * 
- * @author Daniel Serrano Torres
- * @author Alvaro Quesada Pimentel
- */
-public class SalidaDatos {
+import sistema.interfaces.ObjetosConSalidaDeDatos;
+import sistema.salidadatos.InterfaceSalidaDatos;
+
+public class Ventana extends JFrame implements InterfaceSalidaDatos {
+
+	private JTextArea textcicli1;
+	private JTextArea textcicli2;
+	private JTextArea textcicli3;
+	private JTextArea textcicli4;
+	private JPanel panel1;
+	private JPanel panel2;
+	private JPanel panel3;
+	private JPanel panel4;
 
 	/**
 	 *  Lista de objetos que se van a mostrar
 	 */
 	private List<ObjetosConSalidaDeDatos> registroobjetossalidadatos;
-
-	/**
-	 * Contruye la calase con un registro vacío de elementos.
-	 */
-	public SalidaDatos() {
-		registroobjetossalidadatos = new ArrayList<ObjetosConSalidaDeDatos>();
-	}
 	
-	/**
-	 * Registra un objeto para ser mostrada su salida.
-	 * 
-	 * @param objetoconsalidadatos Objeto a reistrar.
-	 */
-	public void registrarObjetoConSalidaDatos(ObjetosConSalidaDeDatos objetoconsalidadatos) {
-
-		registroobjetossalidadatos.add(objetoconsalidadatos);
-	}
-	
-	/**
-	 * Registra todos los elementos de una colección.
-	 * 
-	 * @param listadeobjetosconsalidadatos
-	 */
-	public void registrarObjetoConSalidaDatos(Collection<ObjetosConSalidaDeDatos> listadeobjetosconsalidadatos) {
+	public Ventana(){
 		
+		registroobjetossalidadatos = new ArrayList<ObjetosConSalidaDeDatos>();
+		
+		init();
+	}
+	
+	private void init() {
+		
+		setTitle("principal");
+		setBounds(new Rectangle(500,500));
+		
+		textcicli1 = new JTextArea("cicli1");
+		textcicli1.setEditable(false);
+		
+		textcicli2 = new JTextArea("cicli2");
+		textcicli2.setEditable(false);
+		
+		textcicli3 = new JTextArea("cicli3");
+		textcicli3.setEditable(false);
+		
+		textcicli4 = new JTextArea("cicli4");
+		textcicli4.setEditable(false);
+		
+		panel1 = new JPanel();
+		panel2 = new JPanel();
+		panel3 = new JPanel();
+		panel4 = new JPanel();
+		
+		setLayout(new GridLayout());
+		
+		panel1.add(textcicli1);
+		panel2.add(textcicli2);
+		panel3.add(textcicli3);
+		panel4.add(textcicli4);
+		
+		getContentPane().add(panel1);
+		getContentPane().add(panel2);
+		getContentPane().add(panel3);
+		getContentPane().add(panel4);
+
+		setVisible(true);
+		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	
+	}
+
+	@Override
+	public void registrarObjetoConSalidaDatos(ObjetosConSalidaDeDatos objetoconsalidadatos) {
+		registroobjetossalidadatos.add(objetoconsalidadatos);
+		
+	}
+
+	@Override
+	public void registrarObjetoConSalidaDatos(Collection<ObjetosConSalidaDeDatos> listadeobjetosconsalidadatos) {
 		for (ObjetosConSalidaDeDatos objetoaregistrar : listadeobjetosconsalidadatos) {
 			registroobjetossalidadatos.add(objetoaregistrar);
 		}
+		
 	}
 
-	/**
-	 * Muestra la salida de datos personalizada para cada tipo de elemento.
-	 */
+	@Override
 	public void mostrarDatos() {
-
 		if (registroobjetossalidadatos != null) {
 
 			for (ObjetosConSalidaDeDatos objetoamostrar : registroobjetossalidadatos) {
@@ -106,5 +146,8 @@ public class SalidaDatos {
 
 			}
 		}
+			
 	}
+
+	
 }
